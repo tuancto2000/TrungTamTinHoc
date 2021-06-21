@@ -47,8 +47,10 @@
     <Compile Include="DangKyMonHocKT.cs" />
     <Compile Include="Hocphan.cs" />
     <Compile Include="HocVien.cs" />
+    <Compile Include="HocVienCC.cs" />
     <Compile Include="HocVienKT.cs" />
     <Compile Include="HocVienTotNghiep.cs" />
+    <Compile Include="LichThi.cs" />
     <Compile Include="LopHoc.cs" />
     <Compile Include="MonHoc.cs" />
     <Compile Include="NhanVien.cs" />
