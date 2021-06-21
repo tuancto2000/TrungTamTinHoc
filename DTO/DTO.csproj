@@ -41,6 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChuyenDe.cs" />
+    <Compile Include="DangKyChuyenDe.cs" />
+    <Compile Include="DangKyMonHocCC.cs" />
+    <Compile Include="DangKyMonHocKT.cs" />
+    <Compile Include="Hocphan.cs" />
+    <Compile Include="HocVien.cs" />
+    <Compile Include="HocVienKT.cs" />
+    <Compile Include="HocVienTotNghiep.cs" />
+    <Compile Include="LopHoc.cs" />
+    <Compile Include="MonHoc.cs" />
+    <Compile Include="NhanVien.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
