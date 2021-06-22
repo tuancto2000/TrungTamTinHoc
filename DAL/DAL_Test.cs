@@ -86,7 +86,6 @@ namespace DAL
         {
             if (dt == null)
             {
-                dt = new DataTable();
                 dt = Get();
                 
             }
