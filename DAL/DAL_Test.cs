@@ -15,7 +15,18 @@ namespace DAL
 
         public static DataTable Get()
         {
-            if (dt == null) return null;
+
+            if (dt != null) return dt;
+
+            else
+            {
+
+                SqlDataAdapter da = new SqlDataAdapter("select * from test", con);
+                dt = new DataTable();
+                da.Fill(dt);
+                dt.PrimaryKey = new DataColumn[] { dt.Columns[0] };
+            }    
+
             return dt;
         }
 
@@ -77,7 +88,7 @@ namespace DAL
             {
                 dt = new DataTable();
                 dt = Get();
-                dt.PrimaryKey = new DataColumn[] { dt.Columns[0] };
+                
             }
             DataRow r = dt.Rows.Find(id);
             if (r != null)
