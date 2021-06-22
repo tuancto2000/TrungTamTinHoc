@@ -11,35 +11,36 @@ namespace DAL
 {
     public class DAL_Test : DBConnect
     {
-         DataTable dt = new DataTable();
-        public DataTable Get()
+        DataTable dt = new DataTable();
+        public DAL_Test()
         {
             try
             {
                 string query = "Select * from test";
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
                 da.Fill(dt);
-                return dt;
             }
-            catch
+            catch(Exception e)
             {
-                return null;
+                throw e;
             }
         }
+        public DataTable Get()
+        {
+            return dt;
+        }
+
         public void Insert(Test _test)
         {
             try
             {
-                SqlDataAdapter da = new SqlDataAdapter();
-                da.InsertCommand = new SqlCommand("InsertToTest", con);
-                da.InsertCommand.CommandType = CommandType.StoredProcedure;
-                da.InsertCommand.Parameters.Add("@ID", SqlDbType.NChar, 10, "ID");
-                da.InsertCommand.Parameters.Add("@point", SqlDbType.Float, 0, "point");
+                SqlDataAdapter da = new SqlDataAdapter("select * from test",con);
 
                 DataRow r = dt.NewRow();
                 r["id"] = _test.Id;
                 r["point"] = _test.Point;
                 dt.Rows.Add(r);
+                SqlCommandBuilder cm = new SqlCommandBuilder(da);
                 da.Update(dt);
 
             }
@@ -48,5 +49,46 @@ namespace DAL
                 throw;
             }
         }
+        public void Update(Test _test)
+        {
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter("select * from test", con);
+                DataRow r = dt.Rows.Find(_test.Id);
+                dt.Rows.Add(r);
+                r["point"] = _test.Point;
+                SqlCommandBuilder cm = new SqlCommandBuilder(da);
+                da.Update(dt);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public void Delete(Test _test)
+        {
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter("select * from test", con);
+                DataRow r = dt.Rows.Find(_test.Id);
+                r.Delete();
+                SqlCommandBuilder cm = new SqlCommandBuilder(da);
+                da.Update(dt);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public bool CheckExist(string id)
+        {
+            DataRow r = dt.Rows.Find(id);
+            if (r != null)
+                return true;
+            else return false;
+        }
+
     }
 }

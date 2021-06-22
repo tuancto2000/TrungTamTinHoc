@@ -13,6 +13,7 @@ namespace BUS
         DAL_Test dal_test = new DAL_Test();
         public void Insert(Test _test) =>  dal_test.Insert(_test);
         public DataTable Get() => dal_test.Get();
+        public bool CheckExist(string id) => dal_test.CheckExist(id);
 
     }
 

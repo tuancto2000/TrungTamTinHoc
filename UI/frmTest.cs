@@ -26,8 +26,14 @@ namespace TrungTamTinHoc
         }
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            Test test = new Test(txtID.Text, float.Parse(txtPoint.Text));
-            bus_test.Insert(test);
+            if (bus_test.CheckExist(txtID.Text) == true)
+            {
+                Test test = new Test(txtID.Text, float.Parse(txtPoint.Text));
+
+                bus_test.Insert(test);
+            }
+            else MessageBox.Show("Test da ton tai");
+                
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
