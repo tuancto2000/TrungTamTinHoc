@@ -13,7 +13,6 @@ namespace DTO
         public string IdGVCoiThi { get; set; }
         public DateTime NgayThi { get; set; }
         public string PhongThi { get; set; }
-
         public LichThi(string idMonHoc, string idGVCoiThi, DateTime ngayThi, string phongThi)
         {
             IdMonHoc = idMonHoc;

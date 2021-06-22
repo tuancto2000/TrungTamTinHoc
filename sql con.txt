@@ -1,0 +1,8 @@
+gui : giao diện
+BUS : tâng business
+DAL :  tương tác database
+DTO : các class tương tự table db
+
+
+gui --> bus --> dal
+DTO dùng để truyền data giữa các tầng
