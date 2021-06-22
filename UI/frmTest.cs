@@ -13,7 +13,7 @@ namespace TrungTamTinHoc
 {
     public partial class frmTest : Form
     {
-        BUS_Test bus_test = new BUS_Test();
+
         public frmTest()
         {
             InitializeComponent();
@@ -22,15 +22,15 @@ namespace TrungTamTinHoc
         private void test_Load(object sender, EventArgs e)
         {
             
-
         }
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            if (bus_test.CheckExist(txtID.Text) == true)
+            
+            if (BUS_Test.CheckExist(txtID.Text) == false)
             {
                 Test test = new Test(txtID.Text, float.Parse(txtPoint.Text));
 
-                bus_test.Insert(test);
+                BUS_Test.Insert(test);
             }
             else MessageBox.Show("Test da ton tai");
                 
@@ -38,7 +38,7 @@ namespace TrungTamTinHoc
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            dtgvTest.DataSource = bus_test.Get();
+            dtgvTest.DataSource = BUS_Test.Get();
         }
     }
 }

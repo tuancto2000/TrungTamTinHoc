@@ -10,10 +10,9 @@ namespace BUS
 {
     public class BUS_Test
     {
-        DAL_Test dal_test = new DAL_Test();
-        public void Insert(Test _test) =>  dal_test.Insert(_test);
-        public DataTable Get() => dal_test.Get();
-        public bool CheckExist(string id) => dal_test.CheckExist(id);
+        public static void Insert(Test _test) => DAL_Test.Insert(_test);
+        public static DataTable Get() => DAL_Test.Get();
+        public static bool CheckExist(string id) => DAL_Test.CheckExist(id);
 
     }
 
