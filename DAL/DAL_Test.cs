@@ -11,31 +11,30 @@ namespace DAL
 {
     public class DAL_Test : DBConnect
     {
-        DataTable dt = new DataTable();
-        public DAL_Test()
+        static DataTable dt;
+
+        public static DataTable Get()
         {
-            try
+
+            if (dt != null) return dt;
+
+            else
             {
-                string query = "Select * from test";
-                SqlDataAdapter da = new SqlDataAdapter(query, con);
+
+                SqlDataAdapter da = new SqlDataAdapter("select * from test", con);
+                dt = new DataTable();
                 da.Fill(dt);
-            }
-            catch(Exception e)
-            {
-                throw e;
-            }
-        }
-        public DataTable Get()
-        {
+                dt.PrimaryKey = new DataColumn[] { dt.Columns[0] };
+            }    
+
             return dt;
         }
 
-        public void Insert(Test _test)
+        public static void Insert(Test _test)
         {
             try
             {
                 SqlDataAdapter da = new SqlDataAdapter("select * from test",con);
-
                 DataRow r = dt.NewRow();
                 r["id"] = _test.Id;
                 r["point"] = _test.Point;
@@ -49,11 +48,12 @@ namespace DAL
                 throw;
             }
         }
-        public void Update(Test _test)
+        public static void Update(Test _test)
         {
             try
             {
                 SqlDataAdapter da = new SqlDataAdapter("select * from test", con);
+
                 DataRow r = dt.Rows.Find(_test.Id);
                 dt.Rows.Add(r);
                 r["point"] = _test.Point;
@@ -66,7 +66,7 @@ namespace DAL
                 throw;
             }
         }
-        public void Delete(Test _test)
+        public static void Delete(Test _test)
         {
             try
             {
@@ -82,8 +82,13 @@ namespace DAL
                 throw;
             }
         }
-        public bool CheckExist(string id)
+        public static bool CheckExist(string id)
         {
+            if (dt == null)
+            {
+                dt = Get();
+                
+            }
             DataRow r = dt.Rows.Find(id);
             if (r != null)
                 return true;
