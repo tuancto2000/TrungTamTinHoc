@@ -52,19 +52,28 @@
     <Compile Include="frmTest.Designer.cs">
       <DependentUpon>frmTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmGiaoVu.cs">
+    <Compile Include="GiaoVu\frmXepLichThi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmGiaoVu.Designer.cs">
+    <Compile Include="GiaoVu\frmXepLichThi.Designer.cs">
+      <DependentUpon>frmXepLichThi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoVu\frmGiaoVu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiaoVu\frmGiaoVu.Designer.cs">
       <DependentUpon>frmGiaoVu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmGiaoVu.resx">
+    <EmbeddedResource Include="GiaoVu\frmGiaoVu.resx">
       <DependentUpon>frmGiaoVu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTest.resx">
       <DependentUpon>frmTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GiaoVu\frmXepLichThi.resx">
+      <DependentUpon>frmXepLichThi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

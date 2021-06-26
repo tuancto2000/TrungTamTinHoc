@@ -24,10 +24,10 @@ namespace UI
             {
                 txtMaLop.Clear();
                 txtMaGiaoVien.Clear();
-                txtMaMonHoc.Enabled = false;
+                txtMaMonHoc1.Enabled = false;
                 txtMaGiaoVien.Enabled = false;
-                btnXacNhanTab1.Enabled = false;
-                dgvDSLop.DataSource = BUS_GiaoVu.GetMH();
+                btnXacNhan1.Enabled = false;
+                dgvDSLop.DataSource = BUS_GiaoVu.GetMH1();
                 dgvDSGiaoVien.DataSource = BUS_GiaoVu.GetGV();
             }
             else if (tabGiaoVu.SelectedIndex == 1)
@@ -36,42 +36,52 @@ namespace UI
                 txtMaLop.Clear();
                 txtTenHocVien.Clear();
                 txtDiem.Clear();
-                btnXacNhanTab2.Enabled = false;
+                btnXacNhan2.Enabled = false;
                 dgvDSHocVien.DataSource = BUS_GiaoVu.GetHVTN();
+            }
+            else if (tabGiaoVu.SelectedIndex == 2)
+            {
+                txtMaMonHoc3.Clear();
+                txtMaHocPhan.Clear();
+                txtTenMonHoc.Clear();
+                btnXepLichThi.Enabled = false;
+                dgvDSMonHoc.DataSource = BUS_GiaoVu.GetMH2();
             }
         }
 
+
+        // Tab1
         private void btnXacNhanTab1_Click(object sender, EventArgs e)
         {
             int check = 0;
-            BUS_GiaoVu.PhanCongGiangDay(txtMaMonHoc.Text, txtMaGiaoVien.Text, out check);
+            BUS_GiaoVu.PhanCongGiangDay(txtMaMonHoc1.Text, txtMaGiaoVien.Text, out check);
 
             if (check == 0)
                 MessageBox.Show("Cập nhật không thành công! Giáo viên bị trùng lịch dạy");
             else
             {
                 MessageBox.Show("Cập nhật thành công!");
-                dgvDSLop.DataSource = BUS_GiaoVu.GetMH();
+                dgvDSLop.DataSource = BUS_GiaoVu.GetMH1();
             }
 
-            txtMaMonHoc.Clear();
+            txtMaMonHoc1.Clear();
             txtMaGiaoVien.Clear();
-            btnXacNhanTab1.Enabled = false;
+            btnXacNhan1.Enabled = false;
         }
 
         private void btnHuyTab1_Click(object sender, EventArgs e)
         {
-            txtMaMonHoc.Clear();
+            txtMaMonHoc1.Clear();
             txtMaGiaoVien.Clear();
-            btnXacNhanTab1.Enabled = false;
+            btnXacNhan1.Enabled = false;
         }
 
         private void frmGiaoVu_Load(object sender, EventArgs e)
         {
-            txtMaMonHoc.Enabled = false;
+            txtMaMonHoc1.Enabled = false;
             txtMaGiaoVien.Enabled = false;
-            btnXacNhanTab1.Enabled = false;
-            dgvDSLop.DataSource = BUS_GiaoVu.GetMH();
+            btnXacNhan1.Enabled = false;
+            dgvDSLop.DataSource = BUS_GiaoVu.GetMH1();
             dgvDSGiaoVien.DataSource = BUS_GiaoVu.GetGV();
         }
 
@@ -80,10 +90,10 @@ namespace UI
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.dgvDSLop.Rows[e.RowIndex];
-                txtMaMonHoc.Text = row.Cells["Mã môn học"].Value.ToString();
+                txtMaMonHoc1.Text = row.Cells["Mã môn học"].Value.ToString();
             }
             if (txtMaGiaoVien.Text != "")
-                btnXacNhanTab1.Enabled = true;
+                btnXacNhan1.Enabled = true;
         }
 
         private void dgvDSGiaoVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -93,10 +103,12 @@ namespace UI
                 DataGridViewRow row = this.dgvDSGiaoVien.Rows[e.RowIndex];
                 txtMaGiaoVien.Text = row.Cells["Mã giáo viên"].Value.ToString();
             }
-            if (txtMaMonHoc.Text != "")
-                btnXacNhanTab1.Enabled = true;
+            if (txtMaMonHoc1.Text != "")
+                btnXacNhan1.Enabled = true;
         }
+        // End Tab1
 
+        // Tab2
         private void btnXacNhanTab2_Click(object sender, EventArgs e)
         {
             if (txtDiem.Text == "")
@@ -121,7 +133,7 @@ namespace UI
             txtTenHocVien.Clear();
             txtDiem.Clear();
             txtDiem.Enabled = false;
-            btnXacNhanTab2.Enabled = false;
+            btnXacNhan2.Enabled = false;
         }
 
         private void btnHuyTab2_Click(object sender, EventArgs e)
@@ -131,7 +143,7 @@ namespace UI
             txtTenHocVien.Clear();
             txtDiem.Clear();
             txtDiem.Enabled = false;
-            btnXacNhanTab2.Enabled = false;
+            btnXacNhan2.Enabled = false;
         }
 
         private void dgvDSHocVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -144,7 +156,7 @@ namespace UI
                 txtTenHocVien.Text = row.Cells["Tên học viên"].Value.ToString();
             }
             txtDiem.Enabled = true;
-            btnXacNhanTab2.Enabled = true;
+            btnXacNhan2.Enabled = true;
         }
 
         private void txtDiem_TextChanged(object sender, EventArgs e)
@@ -181,5 +193,42 @@ namespace UI
                 }
             }
         }
+        // End Tab2
+
+        // Tab3
+        private void btnXepLichThi_Click(object sender, EventArgs e)
+        {
+            if(BUS_GiaoVu.CheckExistsLichThi(txtMaMonHoc3.Text))
+            {
+                MessageBox.Show("Môn học đã được xếp lịch thi");
+                return;
+            }    
+
+            var frmXepLichThi = new frmXepLichThi(txtMaMonHoc3.Text, txtTenMonHoc.Text);
+            this.Hide();
+            frmXepLichThi.ShowDialog();
+            this.Show();
+        }
+
+        private void btnHuy3_Click(object sender, EventArgs e)
+        {
+            txtMaMonHoc3.Clear();
+            txtMaHocPhan.Clear();
+            txtTenMonHoc.Clear();
+            btnXepLichThi.Enabled = false;
+        }
+
+        private void dgvDSMonHoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dgvDSMonHoc.Rows[e.RowIndex];
+                txtMaMonHoc3.Text = row.Cells["Mã môn học"].Value.ToString();
+                txtMaHocPhan.Text = row.Cells["Mã học phần"].Value.ToString();
+                txtTenMonHoc.Text = row.Cells["Tên môn học"].Value.ToString();
+            }
+            btnXepLichThi.Enabled = true;
+        }
+        // End Tab3
     }
 }

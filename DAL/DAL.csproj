@@ -41,9 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL_NhanVien.cs" />
+    <Compile Include="DAL_LichThi.cs" />
     <Compile Include="DAL_HocVienTotNghiep.cs" />
     <Compile Include="DAL_HocVien.cs" />
-    <Compile Include="DAL_GiaoVien.cs" />
     <Compile Include="DAL_MonHoc.cs" />
     <Compile Include="DAL_Test.cs" />
     <Compile Include="DBConnect.cs" />

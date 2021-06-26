@@ -10,7 +10,7 @@ namespace DAL
 {
     public class DAL_MonHoc : DBConnect
     {
-        public static DataTable Get()
+        public static DataTable Get1()
         {
             SqlCommand cmd = new SqlCommand("select Id_mh, Ten_mh, lich_hoc from Mon_hoc where Id_nv is null", con);
             cmd.Connection.Open();
@@ -37,6 +37,21 @@ namespace DAL
             cmd.ExecuteReader();
             check = Convert.ToInt32(cmd.Parameters["@CHECK"].Value);
             cmd.Connection.Close();
+        }
+
+        public static DataTable Get2()
+        {
+            SqlCommand cmd = new SqlCommand("select Id_mh, Id_hp, Ten_mh from Mon_hoc where IsOpen = 1", con);
+            cmd.Connection.Open();
+            var dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            cmd.Connection.Close();
+            dt.PrimaryKey = new DataColumn[] { dt.Columns[0] };
+            dt.Columns["Id_mh"].ColumnName = "Mã môn học";
+            dt.Columns["Id_hp"].ColumnName = "Mã học phần";
+            dt.Columns["Ten_mh"].ColumnName = "Tên môn học";
+
+            return dt;
         }
     }
 }
