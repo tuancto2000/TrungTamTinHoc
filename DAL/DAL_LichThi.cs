@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using DTO;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL
 {
@@ -39,10 +34,10 @@ namespace DAL
             return true;
         }
 
-        public static void ThemLichThi(string idMH, string idNV, string ngayThi, string phongThi)
+        public static void ThemLichThi(LichThi lichThi)
         {
-            SqlCommand cmd = new SqlCommand("insert into lich_thi values('" + idMH + "', '" + idNV + "', " +
-                "cast('" + ngayThi + "' as date), '" + phongThi + "')", con);
+            SqlCommand cmd = new SqlCommand("insert into lich_thi values('" + lichThi.IdMonHoc + "', '" + lichThi.IdGVCoiThi 
+                + "', " + "cast('" + lichThi.NgayThi + "' as date), '" + lichThi.PhongThi + "')", con);
             cmd.Connection.Open();
             cmd.ExecuteReader();
         }

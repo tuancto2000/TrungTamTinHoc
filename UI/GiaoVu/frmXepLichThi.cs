@@ -1,12 +1,6 @@
 ﻿using BUS;
+using DTO;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI
@@ -31,16 +25,16 @@ namespace UI
             txtMaMonHoc.Text = _maMH;
             txtTenMonHoc.Text = _tenMH;
 
-            dgvDSNhanVien.DataSource = BUS_GiaoVu.GetNV();
+            dgvDSGiaoVien.DataSource = BUS_GiaoVu.GetNV();
         }
 
-        private void dgvDSNhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvDSGiaoVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = this.dgvDSNhanVien.Rows[e.RowIndex];
-                txtMaNhanVien.Text = row.Cells["Mã nhân viên"].Value.ToString();
-                txtTenNhanVien.Text = row.Cells["Tên nhân viên"].Value.ToString();
+                DataGridViewRow row = this.dgvDSGiaoVien.Rows[e.RowIndex];
+                txtMaNhanVien.Text = row.Cells["Mã giáo viên"].Value.ToString();
+                txtTenNhanVien.Text = row.Cells["Tên giáo viên"].Value.ToString();
             }
         }
 
@@ -58,7 +52,8 @@ namespace UI
                 return;
             }
 
-            BUS_GiaoVu.ThemLichThi(txtMaMonHoc.Text, txtMaNhanVien.Text, dtmNgayThi.Value.ToShortDateString(), txtPhongThi.Text);
+            var lichThi = new LichThi(txtMaMonHoc.Text, txtMaNhanVien.Text, dtmNgayThi.Value, txtPhongThi.Text);
+            BUS_GiaoVu.ThemLichThi(lichThi);
             MessageBox.Show("Thêm lịch thi thành công");
         }
 

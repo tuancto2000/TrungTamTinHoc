@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 using DAL;
 using DTO;
 namespace BUS
@@ -19,9 +14,9 @@ namespace BUS
             => DAL_HocVienTotNghiep.NhapDiemTotNghiep(idHV, diem);
         public static DataTable GetMH2() => DAL_MonHoc.Get2();
         public static bool CheckExistsLichThi(string idMH) => DAL_LichThi.CheckExists(idMH);
-        public static DataTable GetNV() => DAL_NhanVien.Get();
+        public static DataTable GetNV() => DAL_NhanVien.GetGV();
         public static bool CheckTrungLichCoiThi(string ngayThi, string idNV) => DAL_LichThi.CheckTrungLichCoiThi(ngayThi, idNV);
-        public static void ThemLichThi(string idMH, string idNV, string ngayThi, string lichThi)
-            => DAL_LichThi.ThemLichThi(idMH, idNV, ngayThi, lichThi);
+        public static void ThemLichThi(LichThi lichThi)
+            => DAL_LichThi.ThemLichThi(lichThi);
     }
 }

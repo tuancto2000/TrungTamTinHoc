@@ -38,7 +38,7 @@ namespace UI
             this.label2 = new System.Windows.Forms.Label();
             this.txtTenNhanVien = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgvDSNhanVien = new System.Windows.Forms.DataGridView();
+            this.dgvDSGiaoVien = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.txtPhongThi = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,7 +46,7 @@ namespace UI
             this.btnXacNhan = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDSNhanVien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDSGiaoVien)).BeginInit();
             this.SuspendLayout();
             // 
             // label7
@@ -123,29 +123,29 @@ namespace UI
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dgvDSNhanVien);
+            this.groupBox1.Controls.Add(this.dgvDSGiaoVien);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(34, 147);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(727, 275);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Danh sách nhân viên";
+            this.groupBox1.Text = "Danh sách giáo viên";
             // 
-            // dgvDSNhanVien
+            // dgvDSGiaoVien
             // 
-            this.dgvDSNhanVien.AllowUserToAddRows = false;
-            this.dgvDSNhanVien.AllowUserToDeleteRows = false;
-            this.dgvDSNhanVien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvDSNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDSNhanVien.Location = new System.Drawing.Point(6, 27);
-            this.dgvDSNhanVien.Name = "dgvDSNhanVien";
-            this.dgvDSNhanVien.ReadOnly = true;
-            this.dgvDSNhanVien.RowHeadersWidth = 51;
-            this.dgvDSNhanVien.RowTemplate.Height = 24;
-            this.dgvDSNhanVien.Size = new System.Drawing.Size(715, 242);
-            this.dgvDSNhanVien.TabIndex = 12;
-            this.dgvDSNhanVien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSNhanVien_CellContentClick);
+            this.dgvDSGiaoVien.AllowUserToAddRows = false;
+            this.dgvDSGiaoVien.AllowUserToDeleteRows = false;
+            this.dgvDSGiaoVien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDSGiaoVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDSGiaoVien.Location = new System.Drawing.Point(6, 27);
+            this.dgvDSGiaoVien.Name = "dgvDSGiaoVien";
+            this.dgvDSGiaoVien.ReadOnly = true;
+            this.dgvDSGiaoVien.RowHeadersWidth = 51;
+            this.dgvDSGiaoVien.RowTemplate.Height = 24;
+            this.dgvDSGiaoVien.Size = new System.Drawing.Size(715, 242);
+            this.dgvDSGiaoVien.TabIndex = 12;
+            this.dgvDSGiaoVien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSGiaoVien_CellContentClick);
             // 
             // label3
             // 
@@ -233,7 +233,7 @@ namespace UI
             this.Text = "Xếp lịch thi";
             this.Load += new System.EventHandler(this.frmXepLichThi_Load);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDSNhanVien)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDSGiaoVien)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,7 +250,7 @@ namespace UI
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtTenNhanVien;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgvDSNhanVien;
+        private System.Windows.Forms.DataGridView dgvDSGiaoVien;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtPhongThi;
         private System.Windows.Forms.Label label4;
