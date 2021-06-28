@@ -12,7 +12,6 @@ namespace BUS
     {
         public static void Insert(Test _test) => DAL_Test.Insert(_test);
         public static DataTable Get() => DAL_Test.Get();
-        
 
     }
 
