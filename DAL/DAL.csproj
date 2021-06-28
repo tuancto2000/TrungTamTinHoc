@@ -41,8 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL_HocVien.cs" />
+    <Compile Include="DAL_DangKyMonHoc_CC.cs" />
+    <Compile Include="DAL_DangKyMonHoc_CD.cs" />
+    <Compile Include="DAL_DangKyMonHoc_KT.cs" />
+    <Compile Include="DAL_MonHoc.cs" />
     <Compile Include="DAL_Test.cs" />
-    <Compile Include="DbConnect.cs" />
+    <Compile Include="DBConnect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

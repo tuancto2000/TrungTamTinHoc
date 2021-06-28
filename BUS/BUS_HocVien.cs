@@ -11,16 +11,33 @@ namespace BUS
 {
     public class BUS_HocVien
     {
-        public static DataTable GetHVfromMH(string idMonHoc)
+        public static DataTable GetHVfromMH(string tenLop , string idMonHoc)
         {
-            // xem trong DKCC vs DKKT => lay ra id hoc vien
-            BUS_DangKyMonHocKT.GetHVbyIdMonHoc( idMonHoc).Rows["Id_M"]
+            if(tenLop != null && idMonHoc != null )
+            switch (tenLop)
+            {
+                case "Chứng Chỉ":
+                    return GetHVCCfromMH(idMonHoc);
+                case "Kĩ thuật":
+                    return GetHVCCfromMH(idMonHoc);
+                case "Chuyên đề":
+                    return GetHVCCfromMH(idMonHoc);
+            }
+            return null;
+        }
+        public static DataTable GetHVCCfromMH(string idMonHoc)
+        {
+            // datatable : id hoc sinh, ten hoc vien , diem , lan thi lai
+            return BUS_KetQuaDangKyCC.GiaoVienGet(idMonHoc);
+        }
+        public static DataTable GetKTfromMH(string idMonHoc)
+        {
 
+            return null;
+        }
+        public static DataTable GetHVCDfromMH(string idMonHoc)
+        {
 
-            // select trong hocvien 
-
-
-            // gan vao hocvien[] trong monhoc
             return null;
         }
     }

@@ -9,14 +9,14 @@ using DTO;
 
 namespace DAL
 {
-    public class DAL_Test : DbConnect
+    public class DAL_Test : DBConnect
     {
 
         public static DataTable Get()
         {
             try
             {
-                string query = "Slect * from test";
+                string query = "Select * from test";
                 SqlCommand cmd = new SqlCommand(query, con);
                 DataTable dt = new DataTable();
                 dt.Load(cmd.ExecuteReader());

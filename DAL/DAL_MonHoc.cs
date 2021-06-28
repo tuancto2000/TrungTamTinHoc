@@ -10,22 +10,27 @@ namespace DAL
 {
     public class DAL_MonHoc:DBConnect
     {
-        static DataTable dt;
 
         public static DataTable GetTenLop()
         {
-
-            if (dt != null) return dt;
-
-            else
+            try
+            {
+                DataTable dt = new DataTable();
+                string query = "select id_mh from Mon_hoc where ID_nv = 'NV100021'";
+                SqlCommand cmd = new SqlCommand(query, con);
+                con.Open();
+                dt.Load(cmd.ExecuteReader());
+                return dt;
+            }
+            catch (Exception)
             {
 
-                SqlDataAdapter da = new SqlDataAdapter("select Ten_mh from Mon_hoc where ID_nv = 'NV100010' ", con);
-                dt = new DataTable();
-                da.Fill(dt);
+                throw;
             }
-
-            return dt;
+            finally
+            {
+                con.Close();
+            }
         }
     }
 }

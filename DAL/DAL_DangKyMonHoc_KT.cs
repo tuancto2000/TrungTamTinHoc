@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BUS
+namespace DAL
 {
-    class BUS_GiaoVien
+    class DAL_DangKyMonHoc_KT
     {
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
+using DTO;
 
 namespace TrungTamTinHoc
 {
@@ -17,44 +18,67 @@ namespace TrungTamTinHoc
         {
             InitializeComponent();
         }
-        void ShowComBoBox()
+        void ShowComBoBoxMonHoc()
         {
             try
             {
-                 cboLop.DataSource =  BUS_MonHoc.GetTenLop();
-                cboLop.DisplayMember = "Ten_mh";
+                cboMonHoc.DataSource = BUS_MonHoc.GetTenLop();
+                cboMonHoc.DisplayMember = "Tên môn học";
+                cboMonHoc.ValueMember = "id_mh";
+                cboMonHoc.SelectedIndex = -1;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
-
-            
         }
-
-
-        private void txtDiachiGV_TextChanged(object sender, EventArgs e)
+        void ShowComBoBoxLop()
         {
-            
+            cboLop.Items.Add("Chứng Chỉ");
+            cboLop.Items.Add("Kĩ thuật");
+            cboLop.Items.Add("Chuyên đề");
         }
 
 
 
         private void frmGiaoVien_Load(object sender, EventArgs e)
         {
-            this.ShowComBoBox();
+            cboLop.SelectedIndex = -1;
 
-        }
 
-        private void XemDSHV_Click(object sender, EventArgs e)
-        {
-
+            this.ShowComBoBoxMonHoc();
+            this.ShowComBoBoxLop();
+            dgvHV.Hide();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string idLop = cboLop.SelectedIndex.ToString();
-            dgvHV.DataSource = BUS_HocVien.GetHVfromMH(idLop);
+            dgvHV.Show();
+            string tenLop = cboLop.SelectedItem.ToString();
+            string idMonHoc = cboMonHoc.SelectedValue.ToString();
+            dgvHV.DataSource = BUS_HocVien.GetHVfromMH(tenLop,idMonHoc);
+        }
+
+
+
+        private void dgvHV_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow r = dgvHV.CurrentRow;
+            if (r != null)
+            {
+                string idMonHoc = cboMonHoc.SelectedValue.ToString();
+                string idHocVien = r.Cells["Mã học viên"].Value.ToString();
+                double diem = double.Parse(r.Cells["Điểm"].Value.ToString());
+
+                DangKyMonHocCC update= new DangKyMonHocCC(idMonHoc , idHocVien , diem);
+
+                BUS_KetQuaDangKyCC.UpdateDiemThi(update);
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            BUS_KetQuaDangKyCC.SaveChange();
         }
     }
 }
