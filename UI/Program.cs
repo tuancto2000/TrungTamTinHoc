@@ -17,11 +17,9 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< HEAD
-            Application.Run(new frmGiaoVien());
-=======
+            //Application.Run(new frmGiaoVien());
             //Application.Run(new frmTest());
-            Application.Run(new frmGiaoVien());
+            Application.Run(new frmGiaoVu());
         }
     }
 }

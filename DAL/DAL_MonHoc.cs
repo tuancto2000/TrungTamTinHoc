@@ -1,5 +1,4 @@
 ﻿using System;
-<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -7,34 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
-{
-    public class DAL_MonHoc:DBConnect
-    {
-
-        public static DataTable GetTenLop()
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                string query = "select id_mh from Mon_hoc where ID_nv = 'NV100021'";
-                SqlCommand cmd = new SqlCommand(query, con);
-                con.Open();
-                dt.Load(cmd.ExecuteReader());
-                return dt;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            finally
-            {
-                con.Close();
-            }
-=======
-using System.Data;
-using System.Data.SqlClient;
 
 namespace DAL
 {
@@ -201,7 +172,6 @@ namespace DAL
             cmd.ExecuteReader();
             flag = Convert.ToInt32(cmd.Parameters["@FLAG"].Value);
             cmd.Connection.Close();
->>>>>>> 795ac4f288adab26cb69d77cee52a3bfc16b7cf7
         }
     }
 }
