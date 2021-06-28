@@ -58,13 +58,39 @@
     <Compile Include="frmTest.Designer.cs">
       <DependentUpon>frmTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="GiaoVu\frmXepLichThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiaoVu\frmXepLichThi.Designer.cs">
+      <DependentUpon>frmXepLichThi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoVu\frmGiaoVu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiaoVu\frmGiaoVu.Designer.cs">
+      <DependentUpon>frmGiaoVu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
     <EmbeddedResource Include="frmGiaoVien.resx">
       <DependentUpon>frmGiaoVien.cs</DependentUpon>
+=======
+    <Compile Include="Sinh_Vien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sinh_Vien.Designer.cs">
+      <DependentUpon>Sinh_Vien.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="GiaoVu\frmGiaoVu.resx">
+      <DependentUpon>frmGiaoVu.cs</DependentUpon>
+>>>>>>> 795ac4f288adab26cb69d77cee52a3bfc16b7cf7
     </EmbeddedResource>
     <EmbeddedResource Include="frmTest.resx">
       <DependentUpon>frmTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GiaoVu\frmXepLichThi.resx">
+      <DependentUpon>frmXepLichThi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -75,6 +101,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Sinh_Vien.resx">
+      <DependentUpon>Sinh_Vien.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

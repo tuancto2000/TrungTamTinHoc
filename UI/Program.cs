@@ -17,7 +17,12 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< HEAD
             Application.Run(new frmGiaoVien());
+=======
+            //Application.Run(new frmTest());
+            Application.Run(new Sinh_Vien());
+>>>>>>> 795ac4f288adab26cb69d77cee52a3bfc16b7cf7
         }
     }
 }

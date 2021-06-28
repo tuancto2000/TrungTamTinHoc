@@ -41,11 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="BUS_HocVien.cs" />
     <Compile Include="BUS_DangKyMonHoc_CC.cs" />
     <Compile Include="BUS_DangKyMonHoc_CD.cs" />
     <Compile Include="BUS_DangKyMonHoc_KT.cs" />
     <Compile Include="BUS_MonHoc.cs" />
+=======
+    <Compile Include="BUS_GiaoVu.cs" />
+    <Compile Include="BUS_SinhVien.cs" />
+>>>>>>> 795ac4f288adab26cb69d77cee52a3bfc16b7cf7
     <Compile Include="BUS_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
