@@ -77,6 +77,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GiaoVu\frmGiaoVu.resx">
       <DependentUpon>frmGiaoVu.cs</DependentUpon>
+>>>>>>> 795ac4f288adab26cb69d77cee52a3bfc16b7cf7
     </EmbeddedResource>
     <EmbeddedResource Include="frmTest.resx">
       <DependentUpon>frmTest.cs</DependentUpon>
@@ -93,6 +94,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Sinh_Vien.resx">
+      <DependentUpon>Sinh_Vien.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
