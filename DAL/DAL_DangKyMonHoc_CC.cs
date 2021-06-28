@@ -57,17 +57,13 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@idMonHoc", item.IdMonHoc);
                     cmd.Parameters.AddWithValue("@idHocVien", item.IdHocVien);
                     cmd.Parameters.AddWithValue("@diem", item.Diem);
-                    //con.Open();
-                    //cmd.Parameters.Add("@id_mh",SqlDbType.VarChar, 10,item.IdMonHoc);
-                    //cmd.Parameters.Add("@id_hv", SqlDbType.VarChar,10,item.IdHocVien);
-                    //cmd.Parameters.Add("@diem", SqlDbType.Float,0,item.Diem.ToString());
+
 
                     cmd.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
-                //con.Close();
                 throw ex;
                 
             }
