@@ -14,6 +14,13 @@ namespace DTO
         public string IdHocVien { get ; set ; }
         public string IdNhanVien { get; set; }
         public double Diem { get; set ; }
+        public DangKyMonHocCC(string idMonHoc, string idHocVien, double diem)
+        {
+            IdMonHoc = idMonHoc;
+            IdHocVien = idHocVien;
+            Diem = diem;
+            IdNhanVien = "";
+        }
         public DangKyMonHocCC(string idMonHoc, string idHocVien, string idNhanVien, double diem)
         {
             IdMonHoc = idMonHoc;

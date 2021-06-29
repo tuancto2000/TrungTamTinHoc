@@ -18,5 +18,32 @@ namespace DAL
 
             return dt;
         }
+        public static DataTable Login(string id, string password)
+        {
+            string query = "select * from Nhan_vien " +
+                " where id_nv = '" + id + "' and " +
+                " MatKhau = '" + password + "'";
+
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            con.Close();
+            return dt;
+        }
+        public static string GetTenGV(string id)
+        {
+            string query = "select Ten_nv from Nhan_vien " +
+                " where id_nv = '" + id + "'";
+           
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.Connection.Open();
+            var dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            cmd.Connection.Close();
+           
+            return dt.Rows[0]["Ten_nv"].ToString();
+        }
+
     }
 }

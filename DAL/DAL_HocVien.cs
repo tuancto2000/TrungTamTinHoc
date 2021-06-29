@@ -1,5 +1,11 @@
-﻿using System.Data;
+
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DAL
 {
@@ -18,6 +24,19 @@ namespace DAL
             dt.Columns["Id_lop"].ColumnName = "Mã lớp";
             dt.Columns["Ten_hv"].ColumnName = "Tên học viên";
 
+            return dt;
+        }
+        public static  DataTable Login(string id , string password )
+        {
+            string query = "select * from Hoc_vien " +
+                " where id_hv = '" + id + "' and " +
+                " MatKhau = '" + password + "'";
+
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            con.Close();
             return dt;
         }
     }
