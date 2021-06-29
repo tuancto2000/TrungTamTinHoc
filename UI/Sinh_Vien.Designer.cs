@@ -1,7 +1,7 @@
 ﻿
 namespace UI
 {
-    partial class frmSinhVien
+    partial class Sinh_Vien
     {
         /// <summary>
         /// Required designer variable.
