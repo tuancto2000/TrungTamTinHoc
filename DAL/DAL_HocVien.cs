@@ -26,5 +26,18 @@ namespace DAL
 
             return dt;
         }
+        public static  DataTable Login(string id , string password )
+        {
+            string query = "select * from Hoc_vien " +
+                " where id_hv = '" + id + "' and " +
+                " MatKhau = '" + password + "'";
+
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            con.Close();
+            return dt;
+        }
     }
 }

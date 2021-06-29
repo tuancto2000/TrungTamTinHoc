@@ -35,7 +35,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new NullReferenceException("Tên đăng nhập hoặc mật khẩu sai");
             }
             finally
             {

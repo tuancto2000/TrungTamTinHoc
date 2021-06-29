@@ -1,5 +1,5 @@
 ﻿
-namespace TrungTamTinHoc
+namespace UI
 {
     partial class frmTest
     {

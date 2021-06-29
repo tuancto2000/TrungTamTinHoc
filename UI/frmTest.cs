@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
 using DTO;
-namespace TrungTamTinHoc
+namespace UI
 {
     public partial class frmTest : Form
     {

@@ -45,6 +45,7 @@
     <Compile Include="BUS_DangKyMonHoc_CC.cs" />
     <Compile Include="BUS_DangKyMonHoc_CD.cs" />
     <Compile Include="BUS_DangKyMonHoc_KT.cs" />
+    <Compile Include="BUS_Login.cs" />
     <Compile Include="BUS_MonHoc.cs" />
     <Compile Include="BUS_GiaoVu.cs" />
     <Compile Include="BUS_SinhVien.cs" />

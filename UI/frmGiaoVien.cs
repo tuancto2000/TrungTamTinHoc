@@ -10,10 +10,11 @@ using System.Windows.Forms;
 using BUS;
 using DTO;
 
-namespace TrungTamTinHoc
+namespace UI
 {
     public partial class frmGiaoVien : Form
     {
+        public string _id { get; set; }
         public frmGiaoVien()
         {
             InitializeComponent();
@@ -22,7 +23,7 @@ namespace TrungTamTinHoc
         {
             try
             {
-                cboMonHoc.DataSource = BUS_MonHoc.GetTenLop();
+                cboMonHoc.DataSource = BUS_MonHoc.GetTenLop(_id);
                 cboMonHoc.DisplayMember = "Tên môn học";
                 cboMonHoc.ValueMember = "id_mh";
                 cboMonHoc.SelectedIndex = -1;
@@ -38,6 +39,11 @@ namespace TrungTamTinHoc
             cboLop.Items.Add("Kĩ thuật");
             cboLop.Items.Add("Chuyên đề");
         }
+        void ShowTenGiaoVien()
+        {
+            lblManv.Text = _id;
+            lblTenNV.Text = BUS_GiaoVien.GetTenGV(_id);
+        }
 
 
 
@@ -49,6 +55,7 @@ namespace TrungTamTinHoc
             this.ShowComBoBoxMonHoc();
             this.ShowComBoBoxLop();
             dgvHV.Hide();
+            this.ShowTenGiaoVien();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -79,6 +86,8 @@ namespace TrungTamTinHoc
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             BUS_KetQuaDangKyCC.SaveChange();
+            btnSearch_Click(sender, e);
         }
+
     }
 }

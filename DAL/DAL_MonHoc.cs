@@ -11,12 +11,13 @@ namespace DAL
 {
     public class DAL_MonHoc : DBConnect
     {
-        public static DataTable GetTenLop()
+        public static DataTable GetTenLop(string idGiaoVien)
         {
             try
             {
                 DataTable dt = new DataTable();
-                string query = "select id_mh from Mon_hoc where ID_nv = 'NV100021'";
+                string query = "select id_mh from Mon_hoc " +
+                    "where ID_nv = '" + idGiaoVien + "'";
                 SqlCommand cmd = new SqlCommand(query, con);
                 con.Open();
                 dt.Load(cmd.ExecuteReader());

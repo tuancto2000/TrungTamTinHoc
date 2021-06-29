@@ -11,7 +11,7 @@ namespace BUS
 {
     public class BUS_MonHoc
     {
-        public static DataTable GetTenLop() => DAL_MonHoc.GetTenLop();
+        public static DataTable GetTenLop(string _id) => DAL_MonHoc.GetTenLop(_id);
 
     }
 }

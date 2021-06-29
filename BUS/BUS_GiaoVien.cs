@@ -19,9 +19,9 @@ namespace BUS
                 case "Chứng Chỉ":
                     return GetHVCCfromMH(idMonHoc);
                 case "Kĩ thuật":
-                    return GetHVCCfromMH(idMonHoc);
+                    return GetHVKTfromMH(idMonHoc);
                 case "Chuyên đề":
-                    return GetHVCCfromMH(idMonHoc);
+                    return GetHVCDfromMH(idMonHoc);
             }
             return null;
         }
@@ -30,7 +30,7 @@ namespace BUS
             // datatable : id hoc sinh, ten hoc vien , diem , lan thi lai
             return BUS_KetQuaDangKyCC.GiaoVienGet(idMonHoc);
         }
-        public static DataTable GetKTfromMH(string idMonHoc)
+        public static DataTable GetHVKTfromMH(string idMonHoc)
         {
 
             return null;
@@ -40,5 +40,7 @@ namespace BUS
 
             return null;
         }
+        public static string GetTenGV(string id) => DAL_NhanVien.GetTenGV( id);
+
     }
 }
