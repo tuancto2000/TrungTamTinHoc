@@ -64,9 +64,9 @@ namespace DAL
             flag = Convert.ToInt32(cmd.Parameters["@FLAG"].Value);
             cmd.Connection.Close();
         }
-        public static DataTable hienThiMonHocChungChi(string idHV)
+        public static DataTable hienThiLopChungChi(string idHV)
         {
-            SqlCommand cmd = new SqlCommand("dbo.HIEN_THI_MON_HOC_CHUNG_CHI", con);
+            SqlCommand cmd = new SqlCommand("dbo.HIEN_THI_LOP_CHUNG_CHI", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@ID_HV", idHV)).Value = idHV;
 
@@ -77,18 +77,21 @@ namespace DAL
             return dt;
         }
       
-        public static void dangKyLopChungChi(string idHV, string maMH)
+        public static void dangKyLopChungChi(string idHV, string maMH, out int flag)
         {
+            flag = -1;
             SqlCommand cmd = new SqlCommand("dbo.DANG_KY_LOP_CHUNG_CHI", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@ID_HV", idHV));
             cmd.Parameters.Add(new SqlParameter("@ID_MH", maMH));
+            cmd.Parameters.Add(new SqlParameter("@FLAG", flag)).Direction = ParameterDirection.Output;
 
             cmd.Connection.Open();
-            cmd.ExecuteReader();  
+            cmd.ExecuteReader();
+            flag = Convert.ToInt32(cmd.Parameters["@FLAG"].Value);
             cmd.Connection.Close();
         }
-        public static DataTable hienThiMonHocChungChiDaDK(string idHV)
+        public static DataTable hienThiLopChungChiDaDK(string idHV)
         {
             SqlCommand cmd = new SqlCommand("select * from DKMH_CC where Id_hv = '" + idHV + "'", con);
             cmd.Connection.Open();

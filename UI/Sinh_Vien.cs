@@ -14,7 +14,7 @@ namespace UI
         private void hienLopCC_Click(object sender, EventArgs e)
         {
 
-            lopCC_dtgv.DataSource = BUS_SinhVien.hienThiMonHocChungChi("HV100015");
+            lopCC_dtgv.DataSource = BUS_SinhVien.hienThiLopChungChi("HV100015");
         }
 
         private void hienLopKT_Click(object sender, EventArgs e)
@@ -26,7 +26,7 @@ namespace UI
 
         private void hienLopCCDaDK_Click(object sender, EventArgs e)
         {
-            monHoc_dtgv.DataSource = BUS_SinhVien.hienThiMonHocChungChiDaDK("HV100015");
+            monHoc_dtgv.DataSource = BUS_SinhVien.hienThiLopChungChiDaDK("HV100015");
         }
 
         private void hienLopKTDaDK_Click(object sender, EventArgs e)
@@ -73,6 +73,16 @@ namespace UI
                 MessageBox.Show("Đăng ký tốt nghiệp thành công");
         }
 
-
+        private void dkLopCC_Click(object sender, EventArgs e)
+        {
+            int check = -1;
+            BUS_SinhVien.dangKyLopChungChi("HV100015", maMHCC_txtBox.Text, out check);
+            if (check == 0)
+                MessageBox.Show("Bạn đã đăng ký môn này rồi");
+            else if (check == 1)
+                MessageBox.Show("Đăng ký môn học thành công");
+            else
+                MessageBox.Show("loi");
+        }
     }
 }

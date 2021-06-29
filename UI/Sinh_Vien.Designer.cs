@@ -92,6 +92,7 @@ namespace UI
             this.dkLopCC.TabIndex = 3;
             this.dkLopCC.Text = "Đăng ký";
             this.dkLopCC.UseVisualStyleBackColor = true;
+            this.dkLopCC.Click += new System.EventHandler(this.dkLopCC_Click);
             // 
             // label1
             // 

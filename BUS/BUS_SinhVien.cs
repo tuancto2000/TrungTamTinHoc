@@ -8,12 +8,12 @@ namespace BUS
         // Lớp chứng chỉ
         public static void dangKyChungChi(string idHV, string loaiCC, out int flag)
             => DAL_MonHoc.dangKyChungChi(idHV, loaiCC, out flag);
-        public static DataTable hienThiMonHocChungChi(string idHV)
-            => DAL_MonHoc.hienThiMonHocChungChi(idHV);
-        public static void dangKyLopChungChi(string idHV, string maMH)
-            => DAL_MonHoc.dangKyLopChungChi(idHV, maMH);
-        public static DataTable hienThiMonHocChungChiDaDK(string idHV)
-            => DAL_MonHoc.hienThiMonHocChungChiDaDK(idHV);
+        public static DataTable hienThiLopChungChi(string idHV)
+            => DAL_MonHoc.hienThiLopChungChi(idHV);
+        public static void dangKyLopChungChi(string idHV, string maMH, out int flag)
+            => DAL_MonHoc.dangKyLopChungChi(idHV, maMH, out flag);
+        public static DataTable hienThiLopChungChiDaDK(string idHV)
+            => DAL_MonHoc.hienThiLopChungChiDaDK(idHV);
 
         // Lớp kỹ thuật
         public static DataTable hienThiMonHocKyThuat(string idHV)
