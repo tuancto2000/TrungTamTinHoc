@@ -7,6 +7,28 @@ namespace DAL
 {
     public class DAL_MonHoc : DBConnect
     {
+        public static DataTable GetTenLop(string idGiaoVien)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                string query = "select id_mh from Mon_hoc " +
+                    "where ID_nv = '" + idGiaoVien + "'";
+                SqlCommand cmd = new SqlCommand(query, con);
+                con.Open();
+                dt.Load(cmd.ExecuteReader());
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         public static DataTable Get()
         {
             SqlCommand cmd = new SqlCommand("select * from Mon_hoc where Id_nv is null", con);
@@ -45,7 +67,34 @@ namespace DAL
             cmd.ExecuteReader();
             cmd.Connection.Close();
         }
-      
+        // TRƯỜNG
+        public static void dangKyChungChi(string idHV, string loaiCC, out int flag)
+        {
+            flag = -1;
+            SqlCommand cmd = new SqlCommand("dbo.DANG_KY_CHUNG_CHI", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@ID_HV", idHV));
+            cmd.Parameters.Add(new SqlParameter("@LOAI_CC", loaiCC));
+            cmd.Parameters.Add(new SqlParameter("@FLAG", flag)).Direction = ParameterDirection.Output;
+
+            cmd.Connection.Open();
+            cmd.ExecuteReader();
+            flag = Convert.ToInt32(cmd.Parameters["@FLAG"].Value);
+            cmd.Connection.Close();
+        }
+        public static DataTable hienThiLopChungChi(string idHV)
+        {
+            SqlCommand cmd = new SqlCommand("dbo.HIEN_THI_LOP_CHUNG_CHI", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@ID_HV", idHV)).Value = idHV;
+
+            cmd.Connection.Open();
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            cmd.Connection.Close();
+            return dt;
+        }
+
         public static void dangKyLopChungChi(string idHV, string maMH, out int flag)
         {
             flag = -1;
