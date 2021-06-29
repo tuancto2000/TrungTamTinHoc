@@ -20,7 +20,7 @@ namespace UI
                 txtMaMonHoc1.Enabled = false;
                 txtMaGiaoVien.Enabled = false;
                 btnXacNhan1.Enabled = false;
-                dgvDSLop.DataSource = BUS_GiaoVu.GetMH1();
+                dgvDSLop.DataSource = BUS_GiaoVu.GetMH_PCGD();
                 dgvDSGiaoVien.DataSource = BUS_GiaoVu.GetGV();
             }
             else if (tabGiaoVu.SelectedIndex == 1)
@@ -38,7 +38,7 @@ namespace UI
                 txtMaHocPhan.Clear();
                 txtTenMonHoc.Clear();
                 btnXepLichThi.Enabled = false;
-                dgvDSMonHoc.DataSource = BUS_GiaoVu.GetMH2();
+                dgvDSMonHoc.DataSource = BUS_GiaoVu.GetMH_TTT();
             }
         }
 
@@ -46,20 +46,14 @@ namespace UI
         // Tab1
         private void btnXacNhanTab1_Click(object sender, EventArgs e)
         {
-            int check = 0;
-            BUS_GiaoVu.PhanCongGiangDay(txtMaMonHoc1.Text, txtMaGiaoVien.Text, out check);
-
-            if (check == 0)
+            if (BUS_GiaoVu.CheckExistsLichDay(txtMaMonHoc1.Text, txtMaGiaoVien.Text))
                 MessageBox.Show("Cập nhật không thành công! Giáo viên bị trùng lịch dạy");
             else
             {
+                BUS_GiaoVu.PhanCongGiangDay(txtMaMonHoc1.Text, txtMaGiaoVien.Text);
                 MessageBox.Show("Cập nhật thành công!");
-                dgvDSLop.DataSource = BUS_GiaoVu.GetMH1();
+                dgvDSLop.DataSource = BUS_GiaoVu.GetMH_PCGD();
             }
-
-            txtMaMonHoc1.Clear();
-            txtMaGiaoVien.Clear();
-            btnXacNhan1.Enabled = false;
         }
 
         private void btnHuyTab1_Click(object sender, EventArgs e)
@@ -74,7 +68,7 @@ namespace UI
             txtMaMonHoc1.Enabled = false;
             txtMaGiaoVien.Enabled = false;
             btnXacNhan1.Enabled = false;
-            dgvDSLop.DataSource = BUS_GiaoVu.GetMH1();
+            dgvDSLop.DataSource = BUS_GiaoVu.GetMH_PCGD();
             dgvDSGiaoVien.DataSource = BUS_GiaoVu.GetGV();
         }
 
