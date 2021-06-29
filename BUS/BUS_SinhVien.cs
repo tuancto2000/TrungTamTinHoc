@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using DAL;
-using DTO;
 namespace BUS
 {
     public class BUS_SinhVien

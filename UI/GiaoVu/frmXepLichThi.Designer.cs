@@ -230,6 +230,7 @@ namespace UI
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
             this.Name = "frmXepLichThi";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Xếp lịch thi";
             this.Load += new System.EventHandler(this.frmXepLichThi_Load);
             this.groupBox1.ResumeLayout(false);
