@@ -19,7 +19,7 @@ namespace UI
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmGiaoVien());
             //Application.Run(new frmTest());
-            Application.Run(new frmGiaoVu());
+            Application.Run(new Sinh_Vien());
         }
     }
 }

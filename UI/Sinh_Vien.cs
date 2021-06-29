@@ -43,7 +43,6 @@ namespace UI
                 MessageBox.Show("Sinh viên đã đăng ký chuyên đề rồi");
             else
                 MessageBox.Show("Đăng ký thành công!");
-            maMHCC_txtBox.Clear();
         }
 
         private void dkChungChiB_Click(object sender, EventArgs e)
@@ -55,7 +54,6 @@ namespace UI
                 MessageBox.Show("Sinh viên đã đăng ký chuyên đề rồi");
             else
                 MessageBox.Show("Đăng ký thành công!");
-            maMHCC_txtBox.Clear();
         }
 
         private void dkTotNghiep_Click(object sender, EventArgs e)
@@ -76,13 +74,39 @@ namespace UI
         private void dkLopCC_Click(object sender, EventArgs e)
         {
             int check = -1;
-            BUS_SinhVien.dangKyLopChungChi("HV100015", maMHCC_txtBox.Text, out check);
+            BUS_SinhVien.dangKyLopChungChi("HV100015", maMH, out check);
             if (check == 0)
                 MessageBox.Show("Bạn đã đăng ký môn này rồi");
             else if (check == 1)
                 MessageBox.Show("Đăng ký môn học thành công");
             else
                 MessageBox.Show("loi");
+        }
+
+        private void dkLopKT_Click(object sender, EventArgs e)
+        {
+            int check = -1;
+            BUS_SinhVien.dangKyLopKyThuat("HV100015", maMH, out check);
+            if (check == 0)
+                MessageBox.Show("Bạn đã đăng ký môn này rồi");
+            else if (check == 1)
+                MessageBox.Show("Đăng ký môn học thành công");
+            else
+                MessageBox.Show("loi");
+        }
+        public string maMH = "";
+        private void lopCC_dtgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            DataGridViewRow selectedRow = lopCC_dtgv.Rows[index];
+            maMH = selectedRow.Cells[0].Value.ToString();
+        }
+
+        private void lopKT_dtgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            DataGridViewRow selectedRow = lopKT_dtgv.Rows[index];
+            maMH = selectedRow.Cells[0].Value.ToString();
         }
     }
 }
