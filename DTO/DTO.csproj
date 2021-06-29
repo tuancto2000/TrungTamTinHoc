@@ -54,7 +54,6 @@
     <Compile Include="LopHoc.cs" />
     <Compile Include="MonHoc.cs" />
     <Compile Include="NhanVien.cs" />
-    <Compile Include="Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

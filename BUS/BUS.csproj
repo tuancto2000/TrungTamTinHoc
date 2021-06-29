@@ -49,7 +49,6 @@
     <Compile Include="BUS_MonHoc.cs" />
     <Compile Include="BUS_GiaoVu.cs" />
     <Compile Include="BUS_SinhVien.cs" />
-    <Compile Include="BUS_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

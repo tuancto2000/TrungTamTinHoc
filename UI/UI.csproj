@@ -58,12 +58,6 @@
     <Compile Include="frmGiaoVien.designer.cs">
       <DependentUpon>frmGiaoVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmTest.Designer.cs">
-      <DependentUpon>frmTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="GiaoVu\frmXepLichThi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,9 +86,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GiaoVu\frmGiaoVu.resx">
       <DependentUpon>frmGiaoVu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmTest.resx">
-      <DependentUpon>frmTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GiaoVu\frmXepLichThi.resx">
       <DependentUpon>frmXepLichThi.cs</DependentUpon>
