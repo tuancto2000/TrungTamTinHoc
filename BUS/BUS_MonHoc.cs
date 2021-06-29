@@ -6,13 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL;
 using DTO;
+
 namespace BUS
 {
-    public class BUS_Test
+    public class BUS_MonHoc
     {
-        public static void Insert(Test _test) => DAL_Test.Insert(_test);
-        public static DataTable Get() => DAL_Test.Get();
+        public static DataTable GetTenLop() => DAL_MonHoc.GetTenLop();
 
     }
-
 }
