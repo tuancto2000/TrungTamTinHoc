@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class Sinh_Vien : Form
+    public partial class frmSinhVien : Form
     {
-        public Sinh_Vien()
+        public frmSinhVien()
         {
             InitializeComponent();
         }
