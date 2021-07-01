@@ -14,30 +14,30 @@ namespace UI
         private void hienLopCC_Click(object sender, EventArgs e)
         {
 
-            lopCC_dtgv.DataSource = BUS_SinhVien.hienThiLopChungChi("HV100015");
+            lopCC_dtgv.DataSource = BUS_HocVien.hienThiLopChungChi("HV100015");
         }
 
         private void hienLopKT_Click(object sender, EventArgs e)
         {
-            lopKT_dtgv.DataSource = BUS_SinhVien.hienThiMonHocKyThuat("HV100015");
+            lopKT_dtgv.DataSource = BUS_HocVien.hienThiMonHocKyThuat("HV100015");
 
         }
 
 
         private void hienLopCCDaDK_Click(object sender, EventArgs e)
         {
-            monHoc_dtgv.DataSource = BUS_SinhVien.hienThiLopChungChiDaDK("HV100015");
+            monHoc_dtgv.DataSource = BUS_HocVien.hienThiLopChungChiDaDK("HV100015");
         }
 
         private void hienLopKTDaDK_Click(object sender, EventArgs e)
         {
-            monHoc_dtgv.DataSource = BUS_SinhVien.hienThiMonHocKyThuatDaDK("HV100015");
+            monHoc_dtgv.DataSource = BUS_HocVien.hienThiMonHocKyThuatDaDK("HV100015");
         }
 
         private void dkChungChiA_Click(object sender, EventArgs e)
         {
             int check = -1;
-            BUS_SinhVien.dangKyChungChi("HV100015", "CC A", out check);
+            BUS_HocVien.dangKyChungChi("HV100015", "CC A", out check);
 
             if (check == 0)
                 MessageBox.Show("Sinh viên đã đăng ký chuyên đề rồi");
@@ -48,7 +48,7 @@ namespace UI
         private void dkChungChiB_Click(object sender, EventArgs e)
         {
             int check = -1;
-            BUS_SinhVien.dangKyChungChi("HV100015", "CC B", out check);
+            BUS_HocVien.dangKyChungChi("HV100015", "CC B", out check);
 
             if (check == 0)
                 MessageBox.Show("Sinh viên đã đăng ký chuyên đề rồi");
@@ -59,7 +59,7 @@ namespace UI
         private void dkTotNghiep_Click(object sender, EventArgs e)
         {
             int check = -2;
-            BUS_SinhVien.dangKyThiTotNghiep("HV100015", out check);
+            BUS_HocVien.dangKyThiTotNghiep("HV100015", out check);
 
             if (check == -1)
                 MessageBox.Show("Chỉ có học viên lớp kỹ thuật mới được đăng ký tốt nghiệp");
@@ -74,7 +74,7 @@ namespace UI
         private void dkLopCC_Click(object sender, EventArgs e)
         {
             int check = -1;
-            BUS_SinhVien.dangKyLopChungChi("HV100015", maMH, out check);
+            BUS_HocVien.dangKyLopChungChi("HV100015", maMH, out check);
             if (check == 0)
                 MessageBox.Show("Bạn đã đăng ký môn này rồi");
             else if (check == 1)
@@ -86,7 +86,7 @@ namespace UI
         private void dkLopKT_Click(object sender, EventArgs e)
         {
             int check = -1;
-            BUS_SinhVien.dangKyLopKyThuat("HV100015", maMH, out check);
+            BUS_HocVien.dangKyLopKyThuat("HV100015", maMH, out check);
             if (check == 0)
                 MessageBox.Show("Bạn đã đăng ký môn này rồi");
             else if (check == 1)

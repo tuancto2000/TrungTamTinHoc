@@ -25,7 +25,7 @@ namespace UI
             txtMaMonHoc.Text = _maMH;
             txtTenMonHoc.Text = _tenMH;
 
-            dgvDSGiaoVien.DataSource = BUS_GiaoVu.GetNV();
+            dgvDSGiaoVien.DataSource = BUS_NhanVien.GetGV();
         }
 
         private void dgvDSGiaoVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -46,14 +46,14 @@ namespace UI
                 return;
             }
 
-            if (!BUS_GiaoVu.CheckTrungLichCoiThi(dtmNgayThi.Value.ToShortDateString(), txtMaNhanVien.Text))
+            if (!BUS_LichThi.CheckTrungLichCoiThi(dtmNgayThi.Value.ToShortDateString(), txtMaNhanVien.Text))
             {
                 MessageBox.Show("Nhân viên đã có lịch coi thi vào ngày " + dtmNgayThi.Value.ToShortDateString());
                 return;
             }
 
             var lichThi = new LichThi(txtMaMonHoc.Text, txtMaNhanVien.Text, dtmNgayThi.Value, txtPhongThi.Text);
-            BUS_GiaoVu.ThemLichThi(lichThi);
+            BUS_LichThi.ThemLichThi(lichThi);
             MessageBox.Show("Thêm lịch thi thành công");
         }
 

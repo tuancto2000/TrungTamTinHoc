@@ -20,8 +20,8 @@ namespace UI
                 txtMaMonHoc1.Enabled = false;
                 txtMaGiaoVien.Enabled = false;
                 btnXacNhan1.Enabled = false;
-                dgvDSLop.DataSource = BUS_GiaoVu.GetMH_PCGD();
-                dgvDSGiaoVien.DataSource = BUS_GiaoVu.GetGV();
+                dgvDSLop.DataSource = BUS_MonHoc.GetMH_PCGD();
+                dgvDSGiaoVien.DataSource = BUS_NhanVien.GetGV();
             }
             else if (tabGiaoVu.SelectedIndex == 1)
             {
@@ -30,7 +30,7 @@ namespace UI
                 txtTenHocVien.Clear();
                 txtDiem.Clear();
                 btnXacNhan2.Enabled = false;
-                dgvDSHocVien.DataSource = BUS_GiaoVu.GetHVTN();
+                dgvDSHocVien.DataSource = BUS_HocVien.GetHVTN();
             }
             else if (tabGiaoVu.SelectedIndex == 2)
             {
@@ -38,7 +38,7 @@ namespace UI
                 txtMaHocPhan.Clear();
                 txtTenMonHoc.Clear();
                 btnXepLichThi.Enabled = false;
-                dgvDSMonHoc.DataSource = BUS_GiaoVu.GetMH_TTT();
+                dgvDSMonHoc.DataSource = BUS_MonHoc.GetMH_TTT();
             }
         }
 
@@ -46,13 +46,13 @@ namespace UI
         // Tab1
         private void btnXacNhanTab1_Click(object sender, EventArgs e)
         {
-            if (BUS_GiaoVu.CheckExistsLichDay(txtMaMonHoc1.Text, txtMaGiaoVien.Text))
+            if (BUS_MonHoc.CheckExistsLichDay(txtMaMonHoc1.Text, txtMaGiaoVien.Text))
                 MessageBox.Show("Cập nhật không thành công! Giáo viên bị trùng lịch dạy");
             else
             {
-                BUS_GiaoVu.PhanCongGiangDay(txtMaMonHoc1.Text, txtMaGiaoVien.Text);
+                BUS_MonHoc.PhanCongGiangDay(txtMaMonHoc1.Text, txtMaGiaoVien.Text);
                 MessageBox.Show("Cập nhật thành công!");
-                dgvDSLop.DataSource = BUS_GiaoVu.GetMH_PCGD();
+                dgvDSLop.DataSource = BUS_MonHoc.GetMH_PCGD();
             }
         }
 
@@ -68,8 +68,8 @@ namespace UI
             txtMaMonHoc1.Enabled = false;
             txtMaGiaoVien.Enabled = false;
             btnXacNhan1.Enabled = false;
-            dgvDSLop.DataSource = BUS_GiaoVu.GetMH_PCGD();
-            dgvDSGiaoVien.DataSource = BUS_GiaoVu.GetGV();
+            dgvDSLop.DataSource = BUS_MonHoc.GetMH_PCGD();
+            dgvDSGiaoVien.DataSource = BUS_NhanVien.GetGV();
         }
 
         private void dgvDSLop_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -106,9 +106,9 @@ namespace UI
 
             try
             {
-                BUS_GiaoVu.NhapDiemTotNghiep(txtMaHocVien.Text, txtDiem.Text);
+                BUS_HocVien.NhapDiemTotNghiep(txtMaHocVien.Text, txtDiem.Text);
                 MessageBox.Show("Cập nhật thành công!");
-                dgvDSHocVien.DataSource = BUS_GiaoVu.GetHVTN();
+                dgvDSHocVien.DataSource = BUS_HocVien.GetHVTN();
             }
             catch (Exception ex)
             {
@@ -185,7 +185,7 @@ namespace UI
         // Tab3
         private void btnXepLichThi_Click(object sender, EventArgs e)
         {
-            if(BUS_GiaoVu.CheckExistsLichThi(txtMaMonHoc3.Text))
+            if(BUS_LichThi.CheckExistsLichThi(txtMaMonHoc3.Text))
             {
                 MessageBox.Show("Môn học đã được xếp lịch thi");
                 return;

@@ -2,7 +2,7 @@
 using DAL;
 namespace BUS
 {
-    public class BUS_SinhVien
+    public class BUS_HocVien
     {
         // Lớp chứng chỉ
         public static void dangKyChungChi(string idHV, string loaiCC, out int flag)
@@ -26,6 +26,8 @@ namespace BUS
         }
         public static void dangKyThiTotNghiep(string idHV, out int flag)
             => DAL_MonHoc.dangKyThiTotNghiep(idHV, out flag);
-
+        public static DataTable GetHVTN() => DAL_HocVienTotNghiep.GetHVTN();
+        public static void NhapDiemTotNghiep(string idHV, string diem)
+            => DAL_HocVienTotNghiep.NhapDiemTotNghiep(idHV, diem);
     }
 }
