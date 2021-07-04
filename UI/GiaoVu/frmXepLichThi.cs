@@ -55,6 +55,7 @@ namespace UI
             var lichThi = new LichThi(txtMaMonHoc.Text, txtMaNhanVien.Text, dtmNgayThi.Value, txtPhongThi.Text);
             BUS_LichThi.ThemLichThi(lichThi);
             MessageBox.Show("Thêm lịch thi thành công");
+            this.Close();
         }
 
         private void btnHuy_Click(object sender, EventArgs e)

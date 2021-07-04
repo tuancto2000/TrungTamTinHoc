@@ -40,6 +40,7 @@ namespace DAL
                 + "', " + "cast('" + lichThi.NgayThi + "' as date), '" + lichThi.PhongThi + "')", con);
             cmd.Connection.Open();
             cmd.ExecuteReader();
+            cmd.Connection.Close();
         }
     }
 }
