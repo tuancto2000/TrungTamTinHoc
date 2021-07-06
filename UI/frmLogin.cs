@@ -52,11 +52,15 @@ namespace UI
                         sinhVien.FormClosing += frm2_FormClosed;
                         sinhVien.Show();
                         break;
+                    case "KeToan":
+                        frmKeToan keToan = new frmKeToan();
+                        keToan._id = _id;
+                        keToan.FormClosing += frm2_FormClosed;
+                        keToan.Show();
+                        break;
 
                 }
                 this.Hide();
-        
-                
 
             }
         }

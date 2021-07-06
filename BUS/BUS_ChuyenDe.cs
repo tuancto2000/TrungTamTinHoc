@@ -18,5 +18,7 @@ namespace BUS
             dt.Columns["Ten_hv"].ColumnName = "Tên học viên";
             return dt;
         }
+        public static DataTable XemHocPhi(string idHocVien) => DAL_ChuyenDe.XemHocPhi(idHocVien);
+        public static void DongHocPhi(string idKeToan , string idHocVien) => DAL_ChuyenDe.DongHocPhi(idKeToan , idHocVien);
     }
 }

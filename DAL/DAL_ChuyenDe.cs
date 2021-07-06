@@ -37,5 +37,54 @@ namespace DAL
                 con.Close();
             }
         }
+        public static DataTable XemHocPhi(string idHocVien)
+        {
+            try
+            {
+                string query = "select Ten_cd as ten , hoc_phi from ChuyenDe" +
+
+                                 "join DKCD on Mon_hoc.Id_mh = DKCD.Id_mh" +
+
+                                 "where DKCD.id_hv = 'HV10001' and Chuyen_de.IsOpen = 1; ";
+
+                SqlCommand cmd = new SqlCommand(query, con);
+                DataTable dt = new DataTable();
+                con.Open();
+                dt.Load(cmd.ExecuteReader());
+                return dt;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public static void DongHocPhi(string idKeToan ,string idHocVien)
+        {
+            try
+            {
+                con.Open();
+                string query = "UpdateHocPhiCD";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idKeToan", idKeToan);
+                cmd.Parameters.AddWithValue("@idHocVien", idHocVien);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+            finally
+            {
+                con.Close();
+
+            }
+        }
     }
 }

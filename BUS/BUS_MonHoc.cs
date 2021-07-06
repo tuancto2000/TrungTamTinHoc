@@ -87,7 +87,8 @@ namespace BUS
             DAL_MonHoc.SaveChangeDKKT(KetQuaHocVien);
             KetQuaHocVien.Clear();
         }
-
+        public static DataTable XemHocPhi(string idHocVien) => DAL_MonHoc.XemHocPhi(idHocVien);
+        public static void DongHocPhi(string idKeToan , string idHocVien) => DAL_MonHoc.DongHocPhi(idKeToan , idHocVien);
 
     }
 }
