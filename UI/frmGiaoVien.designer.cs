@@ -181,6 +181,7 @@
             this.btnUpdate.TabIndex = 46;
             this.btnUpdate.Text = "Cập nhật";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // frmGiaoVien
             // 

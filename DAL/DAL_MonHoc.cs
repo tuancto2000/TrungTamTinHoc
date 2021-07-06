@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DTO;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -190,6 +192,114 @@ namespace DAL
             cmd.ExecuteReader();
             flag = Convert.ToInt32(cmd.Parameters["@FLAG"].Value);
             cmd.Connection.Close();
+        }
+        // x tuan
+        public static DataTable GiaoVienGetHVCC(string idMonHoc)
+        {
+            try
+            {
+                string query = "Select Hoc_vien.id_hv  , Ten_hv  , diem_mon_hoc   " +
+                                  "from DKMH_CC join Hoc_vien " +
+                                  "on DKMH_CC.Id_hv = Hoc_vien.Id_hv " +
+                                  "where id_mh = '" + idMonHoc + "'";
+
+                SqlCommand cmd = new SqlCommand(query, con);
+                DataTable dt = new DataTable();
+                con.Open();
+                dt.Load(cmd.ExecuteReader());
+                return dt;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public static DataTable GiaoVienGetHVKT(string idMonHoc)
+        {
+            try
+            {
+                string query = "Select Hoc_vien.id_hv  , Ten_hv  , diem_mon_hoc , So_lan_thi_lai   " +
+                                  "from DKMH_KT join Hoc_vien " +
+                                  "on DKMH_KT.Id_hv = Hoc_vien.Id_hv " +
+                                  "where id_mh = '" + idMonHoc + "'";
+
+                SqlCommand cmd = new SqlCommand(query, con);
+                DataTable dt = new DataTable();
+                con.Open();
+                dt.Load(cmd.ExecuteReader());
+
+                return dt;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public static void SaveChangeDKCC(Queue<DangKy> ketQua)
+        {
+            try
+            {
+                con.Open();
+                foreach (DangKy item in ketQua)
+                {
+                    string query = "UpdateDKCC";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idMonHoc", item.IdMonHoc);
+                    cmd.Parameters.AddWithValue("@idHocVien", item.IdHocVien);
+                    cmd.Parameters.AddWithValue("@diem", item.Diem);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+            finally
+            {
+                con.Close();
+
+            }
+        }
+        public static void SaveChangeDKKT(Queue<DangKy> ketQua)
+        {
+            try
+            {
+                con.Open();
+                foreach (DangKy item in ketQua)
+                {
+                    string query = "UpdateDKKT";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idMonHoc", item.IdMonHoc);
+                    cmd.Parameters.AddWithValue("@idHocVien", item.IdHocVien);
+                    cmd.Parameters.AddWithValue("@diem", item.Diem);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+            finally
+            {
+                con.Close();
+
+            }
         }
     }
 }

@@ -27,18 +27,15 @@ namespace BUS
         }
         public static DataTable GetHVCCfromMH(string idMonHoc)
         {
-            // datatable : id hoc sinh, ten hoc vien , diem , lan thi lai
-            return BUS_KetQuaDangKyCC.GiaoVienGet(idMonHoc);
+            return BUS_MonHoc.GiaoVienGetHVCC(idMonHoc);
         }
         public static DataTable GetHVKTfromMH(string idMonHoc)
         {
-
-            return null;
+            return BUS_MonHoc.GiaoVienGetHVKT(idMonHoc);
         }
-        public static DataTable GetHVCDfromMH(string idMonHoc)
+        public static DataTable GetHVCDfromMH(string idChuyenDe)
         {
-
-            return null;
+            return BUS_ChuyenDe.GiaoVienGetHVCD(idChuyenDe);
         }
         public static string GetTenGV(string id) => DAL_NhanVien.GetTenGV( id);
 

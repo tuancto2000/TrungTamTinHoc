@@ -110,5 +110,10 @@ namespace UI
             DataGridViewRow selectedRow = lopKT_dtgv.Rows[index];
             maMH = selectedRow.Cells[0].Value.ToString();
         }
+
+        private void tabPage4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -64,6 +64,8 @@ namespace UI
             string tenLop = cboLop.SelectedItem.ToString();
             string idMonHoc = cboMonHoc.SelectedValue.ToString();
             dgvHV.DataSource = BUS_GiaoVien.GetHVfromMH(tenLop,idMonHoc);
+            if (cboLop.SelectedItem.ToString() == "Chuyên đề") btnUpdate.Enabled = false;
+            else btnUpdate.Enabled = true; 
         }
 
 
@@ -76,18 +78,16 @@ namespace UI
                 string idMonHoc = cboMonHoc.SelectedValue.ToString();
                 string idHocVien = r.Cells["Mã học viên"].Value.ToString();
                 double diem = double.Parse(r.Cells["Điểm"].Value.ToString());
+                DangKy dk= new DangKy(idMonHoc , idHocVien ,null, diem);
+                BUS_MonHoc.UpdateDiemThi(dk);
 
-                DangKyMonHocCC update= new DangKyMonHocCC(idMonHoc , idHocVien ,null, diem);
-
-                BUS_KetQuaDangKyCC.UpdateDiemThi(update);
             }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            BUS_KetQuaDangKyCC.SaveChange();
-            btnSearch_Click(sender, e);
+            string tenLop = cboLop.SelectedItem.ToString();
+            BUS_MonHoc.SaveChange(tenLop);
         }
-
     }
 }
