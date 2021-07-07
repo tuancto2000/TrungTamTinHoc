@@ -14,12 +14,33 @@ namespace BUS
             DataTable dt = new DataTable();
             dt = BUS_MonHoc.XemHocPhi(idHocVien);
             dt.Merge(BUS_ChuyenDe.XemHocPhi(idHocVien));
+            dt.Columns["ten"].ColumnName = "Tên môn học / chuyên đề";
+            dt.Columns["hoc_phi"].ColumnName = "Học phí ";
             return dt;
         }
-        public static void DongHocPhi(string idKeToan , string idHocVien)
+        public static int DongHocPhi(string idKeToan , string idHocVien)
         {
-            BUS_ChuyenDe.DongHocPhi(idKeToan, idHocVien);
-            BUS_MonHoc.DongHocPhi(idKeToan, idHocVien);
+            try
+            {
+                BUS_ChuyenDe.DongHocPhi(idKeToan, idHocVien);
+                BUS_MonHoc.DongHocPhi(idKeToan, idHocVien);
+            }
+            catch (Exception)
+            {
+                return 0;
+                throw;
+            }
+            return 1;
+            
+        }
+        public static int TongHocPhi(DataTable dt)
+        {
+            int sum = 0;
+            for (int i = 0; i < dt.Rows.Count; ++i)
+            {
+                sum += Convert.ToInt32(dt.Rows[i][1]);
+            }
+            return sum;
         }
     }
 }

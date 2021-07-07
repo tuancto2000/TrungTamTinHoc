@@ -9,7 +9,20 @@ namespace BUS
     {
         public static Queue<DangKy> KetQuaHocVien = new Queue<DangKy>();
 
-        public static DataTable GetTenLop(string _id) => DAL_MonHoc.GetTenLop(_id);
+        public static DataTable GetTenLop(string tenLop , string _id)
+        {
+            if (tenLop == "Chứng chỉ")
+            {
+                return DAL_MonHoc.GetTenLopCC(_id);
+            }
+            else if (tenLop == "Kỹ thuật")
+            {
+                return DAL_MonHoc.GetTenLopKT(_id);
+            }
+            else return null;
+
+        }
+            
         public static bool CheckExistsLichDay(string idMH, string idGV) => DAL_MonHoc.CheckExistsLichDay(idMH, idGV);
         public static void PhanCongGiangDay(string idMH, string idGV) => DAL_MonHoc.PhanCongGiangDay(idMH, idGV);
         public static DataTable GetMH_PCGD()
@@ -58,37 +71,75 @@ namespace BUS
             dt.Columns["Ten_hv"].ColumnName = "Tên học viên";
             dt.Columns["diem_mon_hoc"].ColumnName = "Điểm";
             dt.Columns["So_lan_thi_lai"].ColumnName = "Số lần thi lại ";
-
             return dt;
         }
         public static void UpdateDiemThi(DangKy dk)
         {
+            if( dk.SoLanThiLai <= 2 && dk.Diem >= 0 && dk.Diem <= 10)
             KetQuaHocVien.Enqueue(dk);
         }
-        public static void SaveChange(string tenLop)
+        public static void  SaveChange(string tenLop)
         {
-            if(tenLop == "Chứng chỉ")
+            try
             {
-                DAL_MonHoc.SaveChangeDKCC(KetQuaHocVien);
+                if (tenLop == "Chứng chỉ")
+                {
+                    DAL_MonHoc.SaveChangeDKCC(KetQuaHocVien);
+                }
+                else if (tenLop == "Kỹ thuật")
+                {
+                    DAL_MonHoc.SaveChangeDKKT(KetQuaHocVien);
+                }
+                
             }
-            else if(tenLop == "Kĩ thuật")
+            catch (System.Exception)
             {
-                DAL_MonHoc.SaveChangeDKKT(KetQuaHocVien);
-            } 
+
+                throw;
+            }
+            KetQuaHocVien.Clear();
+
+        }
+        public static int LoaiHocVien(string idHocVien)
+        {
+            /* 0 : false
+             * 1 : hoc vien chung chi
+             * 2 : hoc vien ky thuat
+             * */
+            if (DAL_HocVien.IsHocVienCC(idHocVien) == 1)
+            {
+                return 1;
+            }
+            else if (DAL_HocVien.IsHocVienKT(idHocVien) == 1)
+                return 2;
+            else return 0;
         }
 
-        public static void SaveChangeDKCC()
+        public static DataTable XemHocPhi(string idHocVien)
         {
-            DAL_MonHoc.SaveChangeDKCC(KetQuaHocVien);
-            KetQuaHocVien.Clear();
+            if (LoaiHocVien(idHocVien) == 1)
+            {
+                return DAL_MonHoc.XemHocPhiCC(idHocVien);
+            }
+            else if (LoaiHocVien(idHocVien) == 2)
+            {
+                return DAL_MonHoc.XemHocPhiKT(idHocVien);
+            }
+            else return null;
         }
-        public static void SaveChangeDKKT()
+
+        public static void DongHocPhi(string idKeToan , string idHocVien)
         {
-            DAL_MonHoc.SaveChangeDKKT(KetQuaHocVien);
-            KetQuaHocVien.Clear();
+            if (LoaiHocVien(idHocVien) == 1)
+            {
+                DAL_MonHoc.DongHocPhiCC(idKeToan,idHocVien);
+            }
+            else if (LoaiHocVien(idHocVien) == 2)
+            {
+                DAL_MonHoc.DongHocPhiKT(idKeToan , idHocVien);
+            }
         }
-        public static DataTable XemHocPhi(string idHocVien) => DAL_MonHoc.XemHocPhi(idHocVien);
-        public static void DongHocPhi(string idKeToan , string idHocVien) => DAL_MonHoc.DongHocPhi(idKeToan , idHocVien);
+
 
     }
 }

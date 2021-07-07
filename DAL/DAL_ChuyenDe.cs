@@ -41,11 +41,11 @@ namespace DAL
         {
             try
             {
-                string query = "select Ten_cd as ten , hoc_phi from ChuyenDe" +
+                string query = "select Ten_cd as ten , hoc_phi from Chuyen_De " +
 
-                                 "join DKCD on Mon_hoc.Id_mh = DKCD.Id_mh" +
+                                 "join DKCD on Chuyen_de.Id_cd = DKCD.Id_cd " +
 
-                                 "where DKCD.id_hv = 'HV10001' and Chuyen_de.IsOpen = 1; ";
+                                   "where DKCD.id_hv = '" + idHocVien + "' and Chuyen_de.IsOpen = 1 ";
 
                 SqlCommand cmd = new SqlCommand(query, con);
                 DataTable dt = new DataTable();
@@ -83,7 +83,30 @@ namespace DAL
             finally
             {
                 con.Close();
+            }
+        }
+        public static DataTable GetTenLop(string idGiaoVien)
+        {
+            try
+            {
+                string query = "select id_cd from ChuyenDe " +
 
+
+                                 "where DKCD.id_gv = '" + idGiaoVien + "'";
+
+                SqlCommand cmd = new SqlCommand(query, con);
+                DataTable dt = new DataTable();
+                con.Open();
+                dt.Load(cmd.ExecuteReader());
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
             }
         }
     }

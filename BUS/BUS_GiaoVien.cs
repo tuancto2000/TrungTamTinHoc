@@ -16,9 +16,9 @@ namespace BUS
             if(tenLop != null && idMonHoc != null )
             switch (tenLop)
             {
-                case "Chứng Chỉ":
+                case "Chứng chỉ":
                     return GetHVCCfromMH(idMonHoc);
-                case "Kĩ thuật":
+                case "Kỹ thuật":
                     return GetHVKTfromMH(idMonHoc);
                 case "Chuyên đề":
                     return GetHVCDfromMH(idMonHoc);

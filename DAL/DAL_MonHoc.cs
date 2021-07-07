@@ -9,13 +9,37 @@ namespace DAL
 {
     public class DAL_MonHoc : DBConnect
     {
-        public static DataTable GetTenLop(string idGiaoVien)
+        public static DataTable GetTenLopCC(string idGiaoVien)
         {
             try
             {
                 DataTable dt = new DataTable();
                 string query = "select id_mh from Mon_hoc " +
-                    "where ID_nv = '" + idGiaoVien + "'";
+                    "where ID_nv = '" + idGiaoVien + "' and isOpen = 1 " +
+                    " and  (id_hp = 'HP10004' or id_hp = 'HP10009')";
+                SqlCommand cmd = new SqlCommand(query, con);
+                con.Open();
+                dt.Load(cmd.ExecuteReader());
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public static DataTable GetTenLopKT(string idGiaoVien)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                string query = "select id_mh from Mon_hoc " +
+                    "where ID_nv = '" + idGiaoVien + "' and isOpen = 1 " +
+                    " and  id_hp != 'HP10004' and id_hp != 'HP10009'";
                 SqlCommand cmd = new SqlCommand(query, con);
                 con.Open();
                 dt.Load(cmd.ExecuteReader());
@@ -301,17 +325,41 @@ namespace DAL
 
             }
         }
-        public static DataTable XemHocPhi(string idHocVien)
+        public static DataTable XemHocPhiCC(string idHocVien)
         {
             try
             {
-                string query = "select Ten_mh , hoc_phi from Mon_hoc" +
+                string query = "select Ten_mh as ten , hoc_phi from Mon_hoc " +
 
-                                 "join DKMH_CC on Mon_hoc.Id_mh = DKMH_CC.Id_mh" +
+                                 "join DKMH_CC on Mon_hoc.Id_mh = DKMH_CC.Id_mh " +
 
-                                " join DKMH_KT on Mon_hoc.Id_mh = DKMH_KT.Id_mh" +
+                                 "where DKMH_CC.id_hv = '" + idHocVien + "' and Mon_hoc.IsOpen = 1 ";
 
-                                 "where DKMH_CC.id_hv = 'HV10001' and Mon_hoc.IsOpen = 1; ";
+                SqlCommand cmd = new SqlCommand(query, con);
+                DataTable dt = new DataTable();
+                con.Open();
+                dt.Load(cmd.ExecuteReader());
+                return dt;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+         }
+        public static DataTable XemHocPhiKT(string idHocVien)
+        {
+            try
+            {
+                string query = "select Ten_mh as ten , hoc_phi from Mon_hoc " +
+
+                                 "join DKMH_KT on Mon_hoc.Id_mh = DKMH_KT.Id_mh " +
+
+                                 "where DKMH_KT.id_hv = '" + idHocVien + "' and Mon_hoc.IsOpen = 1 ";
 
                 SqlCommand cmd = new SqlCommand(query, con);
                 DataTable dt = new DataTable();
@@ -329,12 +377,35 @@ namespace DAL
                 con.Close();
             }
         }
-        public static void DongHocPhi(string idKeToan , string idHocVien)
+        public static void DongHocPhiCC(string idKeToan , string idHocVien)
         {
             try
             {
                 con.Open();
-                string query = "UpdateHocPhiMH";
+                string query = "UpdateHocPhiCC";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idKeToan", idKeToan);
+                cmd.Parameters.AddWithValue("@idHocVien", idHocVien);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+            finally
+            {
+                con.Close();
+
+            }
+        }
+        public static void DongHocPhiKT(string idKeToan, string idHocVien)
+        {
+            try
+            {
+                con.Open();
+                string query = "UpdateHocPhiKT";
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@idKeToan", idKeToan);

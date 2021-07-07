@@ -23,10 +23,22 @@ namespace UI
         {
             try
             {
-                cboMonHoc.DataSource = BUS_MonHoc.GetTenLop(_id);
-                cboMonHoc.DisplayMember = "Tên môn học";
-                cboMonHoc.ValueMember = "id_mh";
-                cboMonHoc.SelectedIndex = -1;
+                string tenLop = cboLop.SelectedItem.ToString();
+                if(tenLop != "Chuyên đề")
+                {
+                    cboMonHoc.DataSource = BUS_MonHoc.GetTenLop(tenLop, _id);
+                    cboMonHoc.DisplayMember = "Tên môn học";
+                    cboMonHoc.ValueMember = "id_mh";
+                    cboMonHoc.SelectedIndex = -1;
+                }    
+                else
+                {
+                    cboMonHoc.DataSource = BUS_ChuyenDe.GetTenLop(_id);
+                    cboMonHoc.DisplayMember = "Tên chuyên đề";
+                    cboMonHoc.ValueMember = "id_cd";
+                    cboMonHoc.SelectedIndex = -1;
+                }    
+                
             }
             catch (Exception e)
             {
@@ -35,8 +47,8 @@ namespace UI
         }
         void ShowComBoBoxLop()
         {
-            cboLop.Items.Add("Chứng Chỉ");
-            cboLop.Items.Add("Kĩ thuật");
+            cboLop.Items.Add("Chứng chỉ");
+            cboLop.Items.Add("Kỹ thuật");
             cboLop.Items.Add("Chuyên đề");
         }
         void ShowTenGiaoVien()
@@ -51,9 +63,8 @@ namespace UI
         {
             cboLop.SelectedIndex = -1;
 
-
-            this.ShowComBoBoxMonHoc();
             this.ShowComBoBoxLop();
+
             dgvHV.Hide();
             this.ShowTenGiaoVien();
         }
@@ -64,8 +75,6 @@ namespace UI
             string tenLop = cboLop.SelectedItem.ToString();
             string idMonHoc = cboMonHoc.SelectedValue.ToString();
             dgvHV.DataSource = BUS_GiaoVien.GetHVfromMH(tenLop,idMonHoc);
-            if (cboLop.SelectedItem.ToString() == "Chuyên đề") btnUpdate.Enabled = false;
-            else btnUpdate.Enabled = true; 
         }
 
 
@@ -87,7 +96,17 @@ namespace UI
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             string tenLop = cboLop.SelectedItem.ToString();
+
             BUS_MonHoc.SaveChange(tenLop);
+            btnSearch.PerformClick();
         }
+
+        private void cboLop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ShowComBoBoxMonHoc();
+
+        }
+
+
     }
 }

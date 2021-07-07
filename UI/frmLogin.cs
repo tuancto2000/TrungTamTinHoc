@@ -61,7 +61,6 @@ namespace UI
 
                 }
                 this.Hide();
-
             }
         }
         private void frm2_FormClosed(object sender, FormClosingEventArgs e)

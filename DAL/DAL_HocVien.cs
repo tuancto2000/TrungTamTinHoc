@@ -39,5 +39,33 @@ namespace DAL
             con.Close();
             return dt;
         }
+        public static int IsHocVienCC(string idHocVien)
+        {
+            string query = "select count(*) from Hoc_vien_lop_chung_chi " +
+                " where id_hv = '" + idHocVien + "'";
+
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            con.Close();
+            if (dt.Rows.Count == 1) return 1;
+            else return 0;
+        }
+        public static int IsHocVienKT(string idHocVien)
+        {
+            string query = "select count(*) from Hoc_vien_lop_ky_thuat " +
+                " where id_hv = '" + idHocVien + "'";
+
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            con.Close();
+
+            if (dt.Rows.Count == 1) return 1;
+            else return 0;
+        }
+
     }
 }
