@@ -30,4 +30,5 @@ namespace BUS
         public static void NhapDiemTotNghiep(string idHV, string diem)
             => DAL_HocVienTotNghiep.NhapDiemTotNghiep(idHV, diem);
     }
+
 }

@@ -42,9 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChuyenDe.cs" />
-    <Compile Include="DangKyChuyenDe.cs" />
-    <Compile Include="DangKyMonHocCC.cs" />
-    <Compile Include="DangKyMonHocKT.cs" />
+    <Compile Include="DangKy.cs" />
     <Compile Include="Hocphan.cs" />
     <Compile Include="HocVien.cs" />
     <Compile Include="HocVienCC.cs" />

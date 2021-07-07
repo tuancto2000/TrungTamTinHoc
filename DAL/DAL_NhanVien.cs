@@ -22,7 +22,7 @@ namespace DAL
         {
             string query = "select * from Nhan_vien " +
                 " where id_nv = '" + id + "' and " +
-                " MatKhau = '" + password + "'";
+                " Mat_Khau = '" + password + "'";
 
             SqlCommand cmd = new SqlCommand(query, con);
             con.Open();
