@@ -89,5 +89,9 @@ namespace UI
             btnSearch_Click(sender, e);
         }
 
+        private void btnUpdate_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

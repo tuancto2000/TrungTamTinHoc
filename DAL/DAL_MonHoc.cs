@@ -124,9 +124,9 @@ namespace DAL
             dt.Columns["Diem_mon_hoc"].ColumnName = "Điểm môn học";
             return dt;
         }
-        public static DataTable hienThiMonHocKyThuat(string idHV)
+        public static DataTable hienThiLopKyThuat(string idHV)
         {
-            SqlCommand cmd = new SqlCommand("dbo.HIEN_THI_MON_HOC_KY_THUAT", con);
+            SqlCommand cmd = new SqlCommand("dbo.HIEN_THI_LOP_KY_THUAT", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@ID_HV", idHV)).Value = idHV;
 
@@ -136,11 +136,13 @@ namespace DAL
             cmd.Connection.Close();
             return dt;
         }
-        public static void dangKyKyThuat(string idHV)
+        public static void dangKyKyThuat(string idHV, out int flag)
         {
+            flag = -1;
             SqlCommand cmd = new SqlCommand("dbo.DANG_KY_KY_THUAT", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@ID_HV", idHV));
+            cmd.Parameters.Add(new SqlParameter("@FLAG", flag)).Direction = ParameterDirection.Output;
             cmd.Connection.Open();
             cmd.ExecuteReader();
             cmd.Connection.Close();
