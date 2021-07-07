@@ -15,13 +15,13 @@ namespace BUS
             => DAL_MonHoc.hienThiLopChungChiDaDK(idHV);
 
         // Lớp kỹ thuật
-        public static DataTable hienThiLopKyThuat(string idHV)
-            => DAL_MonHoc.hienThiLopKyThuat(idHV);
+        public static DataTable hienThiMonHocKyThuat(string idHV)
+            => DAL_MonHoc.hienThiMonHocKyThuat(idHV);
         public static DataTable hienThiMonHocKyThuatDaDK(string idHV)
             => DAL_MonHoc.hienThiMonHocKyThuatDaDK(idHV);
         public static void dangKyLopKyThuat(string idHV, string maMH, out int flag)
         {
-            DAL_MonHoc.dangKyKyThuat(idHV, out flag);
+            DAL_MonHoc.dangKyKyThuat(idHV);
             DAL_MonHoc.dangKyLopKyThuat(idHV, maMH, out flag);
         }
         public static void dangKyThiTotNghiep(string idHV, out int flag)

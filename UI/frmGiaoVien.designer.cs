@@ -53,6 +53,7 @@
             this.cboLop.Name = "cboLop";
             this.cboLop.Size = new System.Drawing.Size(162, 24);
             this.cboLop.TabIndex = 45;
+            this.cboLop.SelectedIndexChanged += new System.EventHandler(this.cboLop_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -135,6 +136,7 @@
             this.dgvHV.RowTemplate.Height = 24;
             this.dgvHV.Size = new System.Drawing.Size(590, 290);
             this.dgvHV.TabIndex = 42;
+            this.dgvHV.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHV_CellValueChanged);
             // 
             // cboMonHoc
             // 
@@ -181,7 +183,7 @@
             this.btnUpdate.TabIndex = 46;
             this.btnUpdate.Text = "Cập nhật";
             this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click_1);
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // frmGiaoVien
             // 
