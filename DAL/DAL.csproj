@@ -41,9 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL_ChuyenDe.cs" />
     <Compile Include="DAL_HocVien.cs" />
-    <Compile Include="DAL_DangKyMonHoc_CC.cs" />
-    <Compile Include="DAL_DangKyMonHoc_CD.cs" />
     <Compile Include="DAL_NhanVien.cs" />
     <Compile Include="DAL_LichThi.cs" />
     <Compile Include="DAL_HocVienTotNghiep.cs" />

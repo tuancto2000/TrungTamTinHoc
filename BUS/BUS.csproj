@@ -41,12 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUS_ChuyenDe.cs" />
+    <Compile Include="BUS_KeToan.cs" />
     <Compile Include="BUS_LichThi.cs" />
     <Compile Include="BUS_NhanVien.cs" />
     <Compile Include="BUS_GiaoVien.cs" />
-    <Compile Include="BUS_DangKyMonHoc_CC.cs" />
-    <Compile Include="BUS_DangKyMonHoc_CD.cs" />
-    <Compile Include="BUS_DangKyMonHoc_KT.cs" />
     <Compile Include="BUS_Login.cs" />
     <Compile Include="BUS_MonHoc.cs" />
     <Compile Include="BUS_HocVien.cs" />

@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmKeToan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKeToan.Designer.cs">
+      <DependentUpon>frmKeToan.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,9 @@
     <Compile Include="Sinh_Vien.Designer.cs">
       <DependentUpon>Sinh_Vien.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmKeToan.resx">
+      <DependentUpon>frmKeToan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
