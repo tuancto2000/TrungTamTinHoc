@@ -38,6 +38,16 @@ namespace BUS
             return BUS_ChuyenDe.GiaoVienGetHVCD(idChuyenDe);
         }
         public static string GetTenGV(string id) => DAL_NhanVien.GetTenGV( id);
-
+        public static DataTable GetTenLop(string tenLop, string idGiaoVien)
+        {
+            if (tenLop == "Chuyên đề")
+            {
+                return BUS_ChuyenDe.GetTenLop(idGiaoVien);
+            }
+            else
+            {
+                return BUS_MonHoc.GetTenLop(tenLop, idGiaoVien);
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
+using System.Windows.Forms;
 using DAL;
 using DTO;
 
@@ -73,10 +74,18 @@ namespace BUS
             dt.Columns["So_lan_thi_lai"].ColumnName = "Số lần thi lại ";
             return dt;
         }
-        public static void UpdateDiemThi(DangKy dk)
+        public static int UpdateDiemThi(DangKy dk)
         {
             if( dk.SoLanThiLai <= 2 && dk.Diem >= 0 && dk.Diem <= 10)
-            KetQuaHocVien.Enqueue(dk);
+            {
+                KetQuaHocVien.Enqueue(dk);
+                return 1;
+            }    
+            else
+            {
+                return 0;
+            }    
+
         }
         public static void  SaveChange(string tenLop)
         {

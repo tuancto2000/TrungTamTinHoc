@@ -38,7 +38,7 @@
             this.lblManv = new System.Windows.Forms.Label();
             this.dgvHV = new System.Windows.Forms.DataGridView();
             this.cboMonHoc = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblMH = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.grbInfGV.SuspendLayout();
@@ -49,7 +49,7 @@
             // 
             this.cboLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLop.FormattingEnabled = true;
-            this.cboLop.Location = new System.Drawing.Point(131, 31);
+            this.cboLop.Location = new System.Drawing.Point(180, 31);
             this.cboLop.Name = "cboLop";
             this.cboLop.Size = new System.Drawing.Size(162, 24);
             this.cboLop.TabIndex = 45;
@@ -137,25 +137,27 @@
             this.dgvHV.Size = new System.Drawing.Size(590, 290);
             this.dgvHV.TabIndex = 42;
             this.dgvHV.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHV_CellValueChanged);
+            
             // 
             // cboMonHoc
             // 
             this.cboMonHoc.AllowDrop = true;
             this.cboMonHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMonHoc.FormattingEnabled = true;
-            this.cboMonHoc.Location = new System.Drawing.Point(131, 77);
+            this.cboMonHoc.Location = new System.Drawing.Point(180, 77);
             this.cboMonHoc.Name = "cboMonHoc";
             this.cboMonHoc.Size = new System.Drawing.Size(162, 24);
             this.cboMonHoc.TabIndex = 41;
+            this.cboMonHoc.SelectedIndexChanged += new System.EventHandler(this.cboMonHoc_SelectedIndexChanged);
             // 
-            // label6
+            // lblMH
             // 
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(29, 73);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(127, 31);
-            this.label6.TabIndex = 40;
-            this.label6.Text = "Môn học";
+            this.lblMH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMH.Location = new System.Drawing.Point(29, 73);
+            this.lblMH.Name = "lblMH";
+            this.lblMH.Size = new System.Drawing.Size(127, 31);
+            this.lblMH.TabIndex = 40;
+            this.lblMH.Text = "Môn học";
             // 
             // btnSearch
             // 
@@ -195,7 +197,7 @@
             this.Controls.Add(this.grbInfGV);
             this.Controls.Add(this.dgvHV);
             this.Controls.Add(this.cboMonHoc);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblMH);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnUpdate);
             this.Name = "frmGiaoVien";
@@ -217,7 +219,7 @@
         private System.Windows.Forms.Label lblManv;
         private System.Windows.Forms.DataGridView dgvHV;
         public System.Windows.Forms.ComboBox cboMonHoc;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblMH;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnUpdate;
     }

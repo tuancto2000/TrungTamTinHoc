@@ -89,10 +89,9 @@ namespace DAL
         {
             try
             {
-                string query = "select id_cd from ChuyenDe " +
+                string query = "select id_cd from Chuyen_De " +
 
-
-                                 "where DKCD.id_gv = '" + idGiaoVien + "'";
+                                 "where id_nv = '" + idGiaoVien + "'";
 
                 SqlCommand cmd = new SqlCommand(query, con);
                 DataTable dt = new DataTable();

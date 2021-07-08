@@ -21,28 +21,21 @@ namespace UI
         }
         void ShowComBoBoxMonHoc()
         {
-            try
+            string tenLop = cboLop.SelectedItem.ToString();
+            cboMonHoc.DataSource = BUS_GiaoVien.GetTenLop(tenLop,_id);
+            
+            if (tenLop != "Chuyên đề")
             {
-                string tenLop = cboLop.SelectedItem.ToString();
-                if(tenLop != "Chuyên đề")
-                {
-                    cboMonHoc.DataSource = BUS_MonHoc.GetTenLop(tenLop, _id);
-                    cboMonHoc.DisplayMember = "Tên môn học";
-                    cboMonHoc.ValueMember = "id_mh";
-                    cboMonHoc.SelectedIndex = -1;
-                }    
-                else
-                {
-                    cboMonHoc.DataSource = BUS_ChuyenDe.GetTenLop(_id);
-                    cboMonHoc.DisplayMember = "Tên chuyên đề";
-                    cboMonHoc.ValueMember = "id_cd";
-                    cboMonHoc.SelectedIndex = -1;
-                }    
-                
+                cboMonHoc.DisplayMember = "Tên môn học";
+                cboMonHoc.ValueMember = "id_mh";
+                cboMonHoc.SelectedIndex = -1;
             }
-            catch (Exception e)
+            else
             {
-                MessageBox.Show(e.Message);
+                lblMH.Text = "Chuyên đề";
+                cboMonHoc.DisplayMember = "Tên chuyên đề";
+                cboMonHoc.ValueMember = "id_cd";
+                cboMonHoc.SelectedIndex = -1;
             }
         }
         void ShowComBoBoxLop()
@@ -88,7 +81,12 @@ namespace UI
                 string idHocVien = r.Cells["Mã học viên"].Value.ToString();
                 double diem = double.Parse(r.Cells["Điểm"].Value.ToString());
                 DangKy dk= new DangKy(idMonHoc , idHocVien ,null, diem);
-                BUS_MonHoc.UpdateDiemThi(dk);
+                if (BUS_MonHoc.UpdateDiemThi(dk) == 0)
+                {
+                    MessageBox.Show("Điểm học sinh phải từ 0 --> 10 ");
+                    btnSearch.PerformClick();
+                }    
+               
 
             }
         }
@@ -104,9 +102,12 @@ namespace UI
         private void cboLop_SelectedIndexChanged(object sender, EventArgs e)
         {
             ShowComBoBoxMonHoc();
-
+            dgvHV.Hide();
         }
 
-
+        private void cboMonHoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dgvHV.Hide();
+        }
     }
 }
