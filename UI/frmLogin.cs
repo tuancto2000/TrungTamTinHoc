@@ -47,7 +47,7 @@ namespace UI
                         giaoVien.Show();
                         break;
                     case "HocVien":
-                        Sinh_Vien sinhVien = new Sinh_Vien();
+                        frmSinhVien sinhVien = new frmSinhVien();
                         sinhVien._id = _id;
                         sinhVien.FormClosing += frm2_FormClosed;
                         sinhVien.Show();
