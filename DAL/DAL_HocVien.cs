@@ -30,7 +30,7 @@ namespace DAL
         {
             string query = "select * from Hoc_vien " +
                 " where id_hv = '" + id + "' and " +
-                " MatKhau = '" + password + "'";
+                " Mat_Khau = '" + password + "'";
 
             SqlCommand cmd = new SqlCommand(query, con);
             con.Open();
@@ -41,7 +41,7 @@ namespace DAL
         }
         public static int IsHocVienCC(string idHocVien)
         {
-            string query = "select count(*) from Hoc_vien_lop_chung_chi " +
+            string query = "select * from Hoc_vien_lop_chung_chi " +
                 " where id_hv = '" + idHocVien + "'";
 
             SqlCommand cmd = new SqlCommand(query, con);
@@ -54,7 +54,7 @@ namespace DAL
         }
         public static int IsHocVienKT(string idHocVien)
         {
-            string query = "select count(*) from Hoc_vien_lop_ky_thuat " +
+            string query = "select * from Hoc_vien_lop_ky_thuat " +
                 " where id_hv = '" + idHocVien + "'";
 
             SqlCommand cmd = new SqlCommand(query, con);

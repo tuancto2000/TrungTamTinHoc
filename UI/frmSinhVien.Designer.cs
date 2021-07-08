@@ -280,15 +280,16 @@ namespace UI
             this.label3.TabIndex = 0;
             this.label3.Text = "Đăng ký chứng chỉ:";
             // 
-            // Sinh_Vien
+            // frmSinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "Sinh_Vien";
+            this.Name = "frmSinhVien";
             this.Text = "Sinh_Vien";
+            this.Load += new System.EventHandler(this.frmSinhVien_Load);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lopCC_dtgv)).EndInit();
             this.tabPage2.ResumeLayout(false);
