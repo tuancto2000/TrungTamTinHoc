@@ -333,7 +333,8 @@ namespace DAL
 
                                  "join DKMH_CC on Mon_hoc.Id_mh = DKMH_CC.Id_mh " +
 
-                                 "where DKMH_CC.id_hv = '" + idHocVien + "' and Mon_hoc.IsOpen = 1 ";
+                                 "where DKMH_CC.id_hv = '" + idHocVien +
+                                  "' and Mon_hoc.IsOpen = 1 and DKMH_CC.id_nv is null ";
 
                 SqlCommand cmd = new SqlCommand(query, con);
                 DataTable dt = new DataTable();
@@ -359,7 +360,8 @@ namespace DAL
 
                                  "join DKMH_KT on Mon_hoc.Id_mh = DKMH_KT.Id_mh " +
 
-                                 "where DKMH_KT.id_hv = '" + idHocVien + "' and Mon_hoc.IsOpen = 1 ";
+                                 "where DKMH_KT.id_hv = '" + idHocVien +
+                                 "' and Mon_hoc.IsOpen = 1 and DKMH_KT.id_nv is null ";
 
                 SqlCommand cmd = new SqlCommand(query, con);
                 DataTable dt = new DataTable();

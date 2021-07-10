@@ -45,7 +45,8 @@ namespace DAL
 
                                  "join DKCD on Chuyen_de.Id_cd = DKCD.Id_cd " +
 
-                                   "where DKCD.id_hv = '" + idHocVien + "' and Chuyen_de.IsOpen = 1 ";
+                                   "where DKCD.id_hv = '" + idHocVien +
+                                    "' and Chuyen_de.IsOpen = 1 and DKCD.id_nv is null ";
 
                 SqlCommand cmd = new SqlCommand(query, con);
                 DataTable dt = new DataTable();
