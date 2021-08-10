@@ -57,7 +57,19 @@ namespace DAL
         }
         public static DataTable Get()
         {
-            SqlCommand cmd = new SqlCommand("select * from Mon_hoc where Id_nv is null", con);
+            SqlCommand cmd = new SqlCommand("select Id_mh, Ten_mh, Lich_hoc from Mon_hoc where Id_nv is null", con);
+            cmd.Connection.Open();
+            var dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            cmd.Connection.Close();
+            dt.PrimaryKey = new DataColumn[] { dt.Columns[0] };
+
+            return dt;
+        }
+
+        public static DataTable Get_LT()
+        {
+            SqlCommand cmd = new SqlCommand("select Id_mh, Ten_mh, Id_hp from Mon_hoc where IsOpen = 1", con);
             cmd.Connection.Open();
             var dt = new DataTable();
             dt.Load(cmd.ExecuteReader());

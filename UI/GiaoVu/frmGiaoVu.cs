@@ -6,6 +6,7 @@ namespace UI
 {
     public partial class frmGiaoVu : Form
     {
+        public string _id { get; set; }
         public frmGiaoVu()
         {
             InitializeComponent();

@@ -58,7 +58,12 @@ namespace UI
                         keToan.FormClosing += frm2_FormClosed;
                         keToan.Show();
                         break;
-
+                    case "GiaoVu":
+                        frmGiaoVu giaoVu = new frmGiaoVu();
+                        giaoVu._id = _id;
+                        giaoVu.FormClosing += frm2_FormClosed;
+                        giaoVu.Show();
+                        break;
                 }
                 this.Hide();
             }
